@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Lenis from 'lenis';
-import { BowCardOpening } from './components/BowCardOpening';
+import { GroomIntroOpening } from './components/GroomIntroOpening';
 import { Hero } from './components/Hero';
 import { InvitationBlessing } from './components/InvitationBlessing';
 import { DateReveal } from './components/DateReveal';
@@ -48,9 +48,9 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#FFF9EF] text-[#291C1A] selection:bg-[#38BDF8] selection:text-[#0C4A6E] overflow-x-hidden font-sans relative">
-      {/* Royal Opening Wedding Bow Card Modal */}
+      {/* Royal Sikh Groom Handover Video Preloader */}
       {!hasOpenedCard && (
-        <BowCardOpening onOpen={() => setHasOpenedCard(true)} />
+        <GroomIntroOpening onOpen={() => setHasOpenedCard(true)} />
       )}
 
       {/* Main Page Flow */}
