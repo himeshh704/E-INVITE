@@ -342,8 +342,8 @@ export const WEDDING_DATA: WeddingData = {
     }
   ],
   audioTrack: {
-    title: "Lakh Khushian Patshahian & Royal Shabad",
-    artist: "Gurbani Divine & Wedding Sitar",
-    url: "/audio/bg_music.mp3"
+    title: "Kamaal Ho Gea",
+    artist: "Satinder Sartaaj",
+    url: "/audio/kamaal_ho_gea.mp3"
   }
 };

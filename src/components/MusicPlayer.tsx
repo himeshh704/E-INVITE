@@ -77,10 +77,10 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ autoPlay = false }) =>
       {/* Floating Gold Control Dock */}
       <div className="flex items-center gap-1.5 p-1.5 rounded-full bg-[#291C1A]/95 backdrop-blur-md border-2 border-[#B5965A] text-[#FFF9EF] shadow-2xl">
         {/* Track Title Pill */}
-        <div className="hidden lg:flex items-center gap-2 px-3 py-1 text-xs font-sans-body">
-          <Music className="w-3.5 h-3.5 text-[#D4AF37] animate-spin" style={{ animationDuration: '8s' }} />
-          <span className="font-medium text-[11px] truncate max-w-[130px] text-amber-100">
-            {WEDDING_DATA.audioTrack.title}
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1 text-xs font-sans-body">
+          <Music className={`w-3.5 h-3.5 text-[#D4AF37] ${isPlaying ? 'animate-spin' : ''}`} style={{ animationDuration: '6s' }} />
+          <span className="font-medium text-[11px] truncate max-w-[190px] text-amber-100">
+            {WEDDING_DATA.audioTrack.title} • {WEDDING_DATA.audioTrack.artist}
           </span>
         </div>
 
