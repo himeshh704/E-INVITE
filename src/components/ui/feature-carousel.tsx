@@ -5,10 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
   Heart,
-  Calendar,
   MapPin,
   Sun,
-  Flame,
   Wine,
   Music,
   Clock,

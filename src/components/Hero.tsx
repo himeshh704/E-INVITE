@@ -14,7 +14,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
 
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   // Ensure Video Autoplay on iOS / Android mobile WebKit browsers
   useEffect(() => {
@@ -117,7 +116,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           muted
           playsInline
           preload="auto"
-          onLoadedData={() => setVideoLoaded(true)}
           onCanPlay={(e) => {
             e.currentTarget.muted = true;
             e.currentTarget.play().catch(() => {});
