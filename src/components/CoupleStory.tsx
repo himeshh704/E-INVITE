@@ -13,27 +13,39 @@ interface GalleryItem {
 const GALLERY_IMAGES: GalleryItem[] = [
   {
     id: 1,
-    src: "/images/ashi_deep_couple.png",
-    title: "Celestial Union",
-    caption: "Ashi & Deep in royal sky blue and rose blush elegance."
+    src: "/images/gallery/gallery_real_1.jpg",
+    title: "Soulful Connection",
+    caption: "Ashi & Deep in timeless warmth and serene togetherness."
   },
   {
     id: 2,
-    src: "/images/ashi_deep_real.jpg",
-    title: "Timeless Moments",
-    caption: "A joyful shower of rose petals and eternal togetherness."
+    src: "/images/gallery/gallery_real_2.jpg",
+    title: "Cherished Smiles",
+    caption: "Radiant laughter and hearts woven in divine harmony."
   },
   {
     id: 3,
-    src: "/images/ad_event_ring_ceremony.jpg",
-    title: "Cheers to Forever",
-    caption: "The romantic exchange of rings under sparkling lights."
+    src: "/images/gallery/gallery_real_3.jpg",
+    title: "Eternal Companions",
+    caption: "Walking hand in hand toward a lifetime of togetherness."
   },
   {
     id: 4,
-    src: "/images/ad_event_reception.jpg",
-    title: "Grand Reception",
-    caption: "An evening of elegance and timeless celebration."
+    src: "/images/gallery/gallery_real_4.jpg",
+    title: "Royal Romance",
+    caption: "Grand celebrations and moments carved into golden memories."
+  },
+  {
+    id: 5,
+    src: "/images/gallery/gallery_real_5.jpg",
+    title: "Pure Devotion",
+    caption: "Blessed with love, laughter, and waheguru's grace."
+  },
+  {
+    id: 6,
+    src: "/images/gallery/gallery_real_6.jpg",
+    title: "Cheers to Forever",
+    caption: "Stepping into a glorious tomorrow as husband and wife."
   }
 ];
 
@@ -98,23 +110,24 @@ export const CoupleStory: React.FC = () => {
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-4" />
         </div>
 
-        {/* Interactive Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Interactive Gallery Grid: 3-column responsive layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {GALLERY_IMAGES.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              transition={{ duration: 0.6, delay: index * 0.12 }}
               onClick={() => openLightbox(index)}
-              className="group relative cursor-pointer rounded-2xl overflow-hidden border-2 border-[#D4AF37]/50 bg-[#F0F9FF] shadow-lg hover:shadow-2xl hover:border-[#D4AF37] transition-all duration-500 aspect-[9/16]"
+              className="group relative cursor-pointer rounded-2xl overflow-hidden border-2 border-[#D4AF37]/60 bg-[#F0F9FF] shadow-lg hover:shadow-2xl hover:border-[#D4AF37] transition-all duration-500 aspect-[3/4]"
             >
               {/* Photo */}
               <img
                 src={item.src}
                 alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                className="w-full h-full object-cover object-center brightness-[1.03] contrast-[1.04] saturate-[1.06] transition-transform duration-700 group-hover:scale-105"
               />
 
               {/* Hover Overlay with Gold Text */}
@@ -122,7 +135,7 @@ export const CoupleStory: React.FC = () => {
                 <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                   <div className="flex items-center gap-1.5 text-amber-200 text-xs font-cinzel uppercase tracking-widest font-semibold mb-1">
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>Ashi & Deep</span>
+                    <span>Ashi &amp; Deep</span>
                   </div>
                   <h3 className="text-lg font-serif-luxury font-bold text-white">
                     {item.title}
@@ -183,7 +196,7 @@ export const CoupleStory: React.FC = () => {
                 <img
                   src={GALLERY_IMAGES[selectedImageIndex].src}
                   alt={GALLERY_IMAGES[selectedImageIndex].title}
-                  className="max-w-full max-h-[70vh] object-contain"
+                  className="max-w-full max-h-[70vh] object-contain brightness-[1.03] contrast-[1.04] saturate-[1.06] rounded-md shadow-2xl"
                 />
               </div>
 

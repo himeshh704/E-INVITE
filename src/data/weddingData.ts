@@ -101,7 +101,7 @@ export const WEDDING_DATA: WeddingData = {
       about: "A gentleman of honour, warm laughter, and quiet elegance. Dedicated to family heritage and walking life's path with devotion, joy, and faith.",
       parents: "Vicky Singh & Poonam Kaur",
       grandparents: "Jameet Singh & Late Raj Kaur",
-      image: "/images/ashi_deep_couple.png"
+      image: "/images/gallery/gallery_real_1.jpg"
     },
     bride: {
       firstName: "Ashi",
@@ -110,7 +110,7 @@ export const WEDDING_DATA: WeddingData = {
       about: "An ethereal radiance with a compassionate heart. Lover of warmth, family blessings, and timeless togetherness.",
       parents: "Sd. Satyajit Singh & Sdr. Amarpreet Kaur",
       grandparents: "Sd. Kesar Singh & Sdr. Jogendra Kaur",
-      image: "/images/ashi_deep_couple.png"
+      image: "/images/gallery/gallery_real_2.jpg"
     },
     hashtag: "#DeepWedsAshi",
     heading: "Deep weds Ashi",
@@ -229,7 +229,7 @@ export const WEDDING_DATA: WeddingData = {
       date: "Winter 2024",
       location: "Asansol & Dhanbad",
       description: "Amidst laughter, shared smiles, and elder blessings, two souls discovered that their journeys were meant to walk as one.",
-      imageUrl: "/images/ashi_deep_couple.png",
+      imageUrl: "/images/gallery/gallery_real_3.jpg",
       caption: "The beginning of an eternal fairytale"
     },
     {
@@ -238,7 +238,7 @@ export const WEDDING_DATA: WeddingData = {
       date: "Spring 2025",
       location: "With Elders & Loved Ones",
       description: "With sweet saffron mithai, hearty hugs, and divine prayers, both families united with boundless warmth and love.",
-      imageUrl: "/images/ashi_deep_real.jpg",
+      imageUrl: "/images/gallery/gallery_real_4.jpg",
       caption: "Celebrating timeless bonds of family"
     },
     {
@@ -247,7 +247,7 @@ export const WEDDING_DATA: WeddingData = {
       date: "December 2026",
       location: "Asansol",
       description: "Stepping into a lifetime of endless laughter, joint adventures, and unconditional companionship under divine grace.",
-      imageUrl: "/images/ashi_deep_couple.png",
+      imageUrl: "/images/gallery/gallery_real_5.jpg",
       caption: "Two hearts beating as one"
     }
   ],
