@@ -99,7 +99,7 @@ export const WEDDING_DATA: WeddingData = {
       fullName: "Deep Singh",
       title: "The Groom",
       about: "A gentleman of honour, warm laughter, and quiet elegance. Dedicated to family heritage and walking life's path with devotion, joy, and faith.",
-      parents: "Vicky Singh & Poonam Kaur",
+      parents: "SD. Vicky Singh & SDR. Poonam Kaur",
       grandparents: "Jameet Singh & Late Raj Kaur",
       image: "/images/gallery/gallery_real_1.jpg"
     },
@@ -336,7 +336,7 @@ export const WEDDING_DATA: WeddingData = {
       phone: "+91 98765 43210"
     },
     {
-      name: "Vicky Singh",
+      name: "SD. Vicky Singh",
       relation: "Groom's Father",
       phone: "+91 98765 43211"
     }
