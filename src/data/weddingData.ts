@@ -134,14 +134,14 @@ export const WEDDING_DATA: WeddingData = {
       date: "8 December 2026",
       formattedDate: "Tuesday, 8th December 2026",
       time: "Samapti: 9:30 AM",
-      venue: "Baba Deep Singh Ji Gurudwara",
-      address: "Dhruv Dangal, Asansol, West Bengal",
-      city: "Asansol",
+      venue: "Gurudwara Gurunanak Pura, Dhanbad (Bride) & Baba Deep Singh Ji Gurudwara, Asansol (Groom)",
+      address: "Dhanbad & Asansol",
+      city: "Dhanbad / Asansol",
       dressCode: "Traditional / Formal (Head Covered)",
-      description: "Seeking the supreme divine blessings of Sri Guru Granth Sahib Ji as we inaugurate the holy wedding festivities of Ashi & Deep.",
+      description: "Seeking the supreme divine blessings of Sri Guru Granth Sahib Ji as we inaugurate the holy wedding festivities of Ashi & Deep. Sahej Path Samapti at Gurudwara Gurunanak Pura, Dhanbad (Bride's Side) & Akhand Path Samapti at Baba Deep Singh Ji Gurudwara, Asansol (Groom's Side).",
       iconName: "Sparkles",
-      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Baba+Deep+Singh+Ji+Gurudwara+Dhruv+Dangal+Asansol",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Path+Samapti+-+Deep+weds+Ashi&dates=20261208T040000Z/20261208T070000Z&details=Path+Samapti+Celebrations&location=Baba+Deep+Singh+Ji+Gurudwara,+Dhruv+Dangal,+Asansol"
+      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Gurudwara+Gurunanak+Pura+Dhanbad",
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Path+Samapti+-+Deep+weds+Ashi&dates=20261208T040000Z/20261208T070000Z&details=Path+Samapti+Celebrations&location=Gurudwara+Gurunanak+Pura,+Dhanbad"
     },
     {
       id: "ring-ceremony",

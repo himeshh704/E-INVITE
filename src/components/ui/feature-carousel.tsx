@@ -19,6 +19,7 @@ import { cn } from "../../lib/utils";
 export interface EventPortion {
   side: string;
   eventName: string;
+  date?: string;
   samaptiTime: string;
   venue: string;
 }
@@ -43,7 +44,7 @@ const EVENTS_DATA: EventFeatureItem[] = [
     sublabel: "8 Dec • 9:30 AM",
     icon: Sparkles,
     image: "/images/ad_event_sahej_path.jpg",
-    venue: "Baba Deep Singh Ji Gurudwara, Dhruv Dangal, Asansol",
+    venue: "Dhanbad & Asansol Gurudwaras",
     time: "Tuesday, 8th Dec • Samapti: 9:30 AM",
     dressCode: "Traditional / Head Covered",
     description: "Seeking the divine blessings of Sri Guru Granth Sahib Ji as we commence the wedding celebrations of Ashi & Deep.",
@@ -51,12 +52,14 @@ const EVENTS_DATA: EventFeatureItem[] = [
       {
         side: "Bride’s Side",
         eventName: "Sahej Path Samapti",
+        date: "8th Dec 2026",
         samaptiTime: "9:30 AM",
-        venue: "Baba Deep Singh Ji Gurudwara, Dhruv Dangal, Asansol",
+        venue: "Gurudwara Gurunanak Pura, Dhanbad",
       },
       {
         side: "Groom’s Side",
         eventName: "Akhand Path Samapti",
+        date: "8th Dec 2026",
         samaptiTime: "9:30 AM",
         venue: "Baba Deep Singh Ji Gurudwara, Dhruv Dangal, Asansol",
       },
@@ -368,11 +371,18 @@ export function FeatureCarousel() {
                                     </div>
 
                                     <div className="space-y-0.5 text-[10px] sm:text-[11px] font-sans-body">
-                                      <div className="flex items-center gap-1.5 text-amber-200">
-                                        <Clock className="w-3 h-3 text-[#D4AF37] shrink-0" />
-                                        <span>
-                                          Samapti Time: <strong className="text-white font-semibold">{portion.samaptiTime}</strong>
-                                        </span>
+                                      <div className="flex items-center justify-between gap-1.5 text-amber-200">
+                                        <div className="flex items-center gap-1.5">
+                                          <Clock className="w-3 h-3 text-[#D4AF37] shrink-0" />
+                                          <span>
+                                            Samapti Time: <strong className="text-white font-semibold">{portion.samaptiTime}</strong>
+                                          </span>
+                                        </div>
+                                        {portion.date && (
+                                          <span className="text-amber-200/90 font-cinzel font-semibold text-[10px]">
+                                            {portion.date}
+                                          </span>
+                                        )}
                                       </div>
                                       <a
                                         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(portion.venue)}`}
