@@ -167,7 +167,7 @@ export const WEDDING_DATA: WeddingData = {
       venue: "The Grand",
       address: "Murgasol, Asansol, West Bengal",
       city: "Asansol",
-      dressCode: "Sunshine Yellow & Rose Pink Pastels",
+      dressCode: "Hot Pink for Ladies",
       description: "A luminous morning of sacred turmeric blessings, cascading fragrant rose and marigold petals, lively dholki beats, and joyous laughter.",
       iconName: "Sparkles",
       googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Grand+Murgasol+Asansol",
@@ -285,7 +285,7 @@ export const WEDDING_DATA: WeddingData = {
       icon: "Sparkles",
       details: [
         "15 Dec (Ring Ceremony): Evening Glamour & Cocktail Formals",
-        "16 Dec Morning (Haldi): Sunshine Yellow & Soft Blush Rose",
+        "16 Dec Morning (Haldi): Hot Pink for Ladies",
         "16 Dec Evening (Baraat): Royal Festive Punjabi",
         "17 Dec (Anand Karaj): Pastel Elegance & Regal Gurdwara Attire",
         "19 Dec (Reception): Tuxedo / Black Tie & Indian Regal"

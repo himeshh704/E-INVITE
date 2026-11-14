@@ -59,7 +59,7 @@ const EVENTS_DATA: EventFeatureItem[] = [
     image: "/images/ad_event_haldi.jpg",
     venue: "The Grand, Murgasol, Asansol",
     time: "Wednesday, 16th Dec • 11:00 AM Onwards",
-    dressCode: "Sunshine Yellow & Soft Blush Rose",
+    dressCode: "Hot Pink for Ladies",
     description: "A joyous celebration of auspicious turmeric, a shower of fragrant rose petals, dholki tunes, and bright smiles.",
   },
   {
