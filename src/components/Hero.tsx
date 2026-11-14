@@ -110,7 +110,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
               el.play().catch(() => {});
             }
           }}
-          src="/videos/hero_video.mp4"
+          src="/videos/hero_video.mp4?v=2"
           autoPlay
           loop
           muted
