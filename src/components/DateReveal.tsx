@@ -251,31 +251,52 @@ export const DateReveal: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-[#FFF9FB] via-[#F0F9FF] to-[#E8F3F8] text-[#1E293B] overflow-hidden">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="relative py-20 px-4 bg-gradient-to-br from-[#070F26] via-[#1A0B2E] to-[#2B0821] text-white overflow-hidden">
+      {/* Vibrant Ambient Glow Orbs */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#0284C7]/30 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-[#DB2777]/30 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#D4AF37]/15 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Subtle Royal Starlight Dust Lattice */}
+      <div 
+        className="absolute inset-0 opacity-20 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(212, 175, 55, 0.4) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+
+      <div className="relative max-w-3xl mx-auto text-center z-10">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/80 border border-[#D4AF37]/40 text-[#0284C7] shadow-sm mb-3">
-          <Calendar className="w-4 h-4 text-[#D4AF37]" />
-          <span className="text-xs font-cinzel font-bold uppercase tracking-[0.25em] text-[#0369A1]">
+        <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-md border border-[#D4AF37]/60 text-amber-200 shadow-[0_0_20px_rgba(212,175,55,0.25)] mb-4">
+          <Calendar className="w-4 h-4 text-amber-300 animate-pulse" />
+          <span className="text-xs font-cinzel font-bold uppercase tracking-[0.25em] text-amber-200 drop-shadow">
             Interactive Scratch Card
           </span>
-          <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+          <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
         </div>
 
-        <h2 className="text-3xl sm:text-5xl font-serif-luxury font-bold text-[#0F172A] mb-2">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif-luxury font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FDE68A] via-[#F59E0B] to-[#FDE68A] drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] mb-3">
           Scratch To Unlock The Date
         </h2>
-        <p className="text-xs sm:text-sm font-sans-body text-[#64748B] mb-8 max-w-md mx-auto">
+        <p className="text-xs sm:text-sm font-sans-body text-[#BAE6FD]/90 mb-8 max-w-md mx-auto leading-relaxed drop-shadow-sm">
           Rub your finger or mouse across the golden foil card to unveil our wedding date and start the live countdown!
         </p>
 
-        {/* Main Card Container */}
-        <div className="relative max-w-lg mx-auto bg-white/95 border-2 border-[#D4AF37]/50 rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden">
+        {/* Main Card Container with Royal Glassmorphism & Gold Border */}
+        <div className="relative max-w-lg mx-auto bg-gradient-to-b from-[#131F37]/90 via-[#1C1A3A]/90 to-[#2A102A]/90 backdrop-blur-2xl border-2 border-[#D4AF37] rounded-3xl p-6 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.7),0_0_40px_rgba(212,175,55,0.25)] overflow-hidden">
+          
+          {/* Royal Corner Filigree Ornaments */}
+          <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[#D4AF37]/70 pointer-events-none" />
+          <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#D4AF37]/70 pointer-events-none" />
+          <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-[#D4AF37]/70 pointer-events-none" />
+          <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-[#D4AF37]/70 pointer-events-none" />
+
           {/* Unrevealed State: Royal Gold Square Scratch Foil Overlay */}
           {!isScratched && (
             <div
               ref={containerRef}
-              className="relative w-64 sm:w-80 h-64 sm:h-80 mx-auto rounded-3xl shadow-[0_10px_35px_rgba(56,189,248,0.25)] group cursor-pointer border-4 border-[#D4AF37] overflow-hidden select-none"
+              className="relative w-64 sm:w-80 h-64 sm:h-80 mx-auto rounded-3xl shadow-[0_10px_35px_rgba(56,189,248,0.35)] group cursor-pointer border-4 border-[#D4AF37] overflow-hidden select-none"
             >
               {/* Underlying Date Text Teaser inside Royal Theme Gold Card */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#0C4A6E] via-[#0284C7] to-[#BE185D] flex flex-col items-center justify-center p-6 text-white text-center">
@@ -306,12 +327,12 @@ export const DateReveal: React.FC = () => {
 
           {/* Quick Reveal Button if not scratched */}
           {!isScratched && (
-            <div className="mt-5 flex justify-center">
+            <div className="mt-6 flex justify-center">
               <button
                 onClick={triggerReveal}
-                className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-gradient-to-r from-[#0284C7] to-[#DB2777] hover:scale-105 active:scale-95 text-white text-xs font-sans-body font-semibold transition-all border border-amber-200/50 shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#0284C7] via-[#0369A1] to-[#DB2777] hover:scale-105 active:scale-95 text-white text-xs font-sans-body font-bold uppercase tracking-wider transition-all border border-amber-300 shadow-[0_0_20px_rgba(2,132,199,0.5)]"
               >
-                <Sparkles className="w-3.5 h-3.5 text-amber-200" />
+                <Sparkles className="w-3.5 h-3.5 text-amber-200 animate-spin" />
                 <span>Quick Reveal Date</span>
               </button>
             </div>
@@ -345,21 +366,21 @@ export const DateReveal: React.FC = () => {
               </div>
 
               {/* Live Ticking Countdown Timer */}
-              <div className="pt-4 border-t border-[#D4AF37]/30">
-                <div className="inline-flex items-center gap-1.5 text-xs font-cinzel font-semibold uppercase tracking-wider text-[#0369A1] mb-4">
-                  <Clock className="w-4 h-4 text-[#D4AF37]" /> Live Countdown To Nuptials
+              <div className="pt-5 border-t border-[#D4AF37]/30">
+                <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-cinzel font-bold uppercase tracking-wider text-amber-200 mb-4 drop-shadow">
+                  <Clock className="w-4 h-4 text-amber-300 animate-pulse" /> Live Countdown To Nuptials
                 </div>
 
                 <div className="grid grid-cols-4 gap-2 sm:gap-4">
                   {timeBlocks.map((block) => (
                     <div
                       key={block.label}
-                      className="bg-gradient-to-b from-[#F0F9FF] to-[#FFF5F8] border border-[#D4AF37]/40 rounded-xl p-3 sm:p-4 text-center shadow-sm"
+                      className="bg-gradient-to-b from-white/[0.12] to-white/[0.04] border border-[#D4AF37]/50 rounded-2xl p-3 sm:p-4 text-center shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur-md hover:border-[#D4AF37] transition-all"
                     >
-                      <div className="text-2xl sm:text-4xl font-serif-luxury font-bold text-[#0369A1]">
+                      <div className="text-2xl sm:text-4xl font-serif-luxury font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-[#BAE6FD] to-[#38BDF8] drop-shadow-md">
                         {String(block.value).padStart(2, '0')}
                       </div>
-                      <span className="text-[10px] sm:text-xs font-cinzel font-semibold uppercase tracking-wider text-[#B45309]">
+                      <span className="text-[10px] sm:text-xs font-cinzel font-bold uppercase tracking-widest text-amber-300 mt-1 block">
                         {block.label}
                       </span>
                     </div>
