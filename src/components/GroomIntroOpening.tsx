@@ -100,7 +100,7 @@ export const GroomIntroOpening: React.FC<GroomIntroOpeningProps> = ({ onOpen }) 
           <div className="relative w-full h-full flex items-center justify-center bg-black">
             <video
               ref={videoRef}
-              src="/videos/groom_handover.mp4"
+              src="/videos/couple_handover.mp4"
               autoPlay
               playsInline
               muted
