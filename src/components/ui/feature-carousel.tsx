@@ -16,6 +16,13 @@ import {
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 
+export interface EventPortion {
+  side: string;
+  eventName: string;
+  samaptiTime: string;
+  venue: string;
+}
+
 export interface EventFeatureItem {
   id: string;
   label: string;
@@ -26,19 +33,34 @@ export interface EventFeatureItem {
   time: string;
   dressCode: string;
   description: string;
+  portions?: EventPortion[];
 }
 
 const EVENTS_DATA: EventFeatureItem[] = [
   {
-    id: "sahej-path-samapti",
-    label: "Sahej Path Samapti",
-    sublabel: "8 Dec • Morning",
+    id: "path-samapti",
+    label: "Path Samapti",
+    sublabel: "8 Dec • 9:30 AM",
     icon: Sparkles,
     image: "/images/ad_event_sahej_path.jpg",
-    venue: "Gurudwara Gurunanak Pura, Dhanbad",
-    time: "Tuesday, 8th Dec • Morning Onwards",
+    venue: "Baba Deep Singh Ji Gurudwara, Dhruv Dangal, Asansol",
+    time: "Tuesday, 8th Dec • Samapti: 9:30 AM",
     dressCode: "Traditional / Head Covered",
     description: "Seeking the divine blessings of Sri Guru Granth Sahib Ji as we commence the wedding celebrations of Ashi & Deep.",
+    portions: [
+      {
+        side: "Bride’s Side",
+        eventName: "Sahej Path Samapti",
+        samaptiTime: "9:30 AM",
+        venue: "Baba Deep Singh Ji Gurudwara, Dhruv Dangal, Asansol",
+      },
+      {
+        side: "Groom’s Side",
+        eventName: "Akhand Path Samapti",
+        samaptiTime: "9:30 AM",
+        venue: "Baba Deep Singh Ji Gurudwara, Dhruv Dangal, Asansol",
+      },
+    ],
   },
   {
     id: "ring-ceremony",
@@ -313,30 +335,97 @@ export function FeatureCarousel() {
                           </p>
                         )}
 
-                        {/* Timing & Venue Pills */}
-                        <div className="space-y-1.5 text-[11px] sm:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90 pointer-events-auto">
-                          <div className="flex items-center gap-1.5 text-amber-200">
-                            <Clock className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                            <span className="truncate">{feature.time}</span>
-                          </div>
-                          {feature.venue && (
-                            <a
-                              href="https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-1.5 text-amber-200 hover:text-amber-300 transition-colors group/map"
-                            >
-                              <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0" />
-                              <span className="truncate underline underline-offset-2 decoration-[#D4AF37]/60">{feature.venue} 📍</span>
-                            </a>
-                          )}
-                          {feature.dressCode && (
-                            <div className="flex items-center gap-1.5 text-amber-200">
-                              <Shirt className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                              <span className="truncate">DRESS CODE: {feature.dressCode}</span>
+                        {feature.portions ? (
+                          /* TWO SEPARATE PORTIONS / CARDS UNDER MAIN HEADING PATH SAMAPTI */
+                          <div className="space-y-2 border-t border-[#D4AF37]/40 pt-2 pointer-events-auto">
+                            <div className="grid grid-cols-1 gap-1.5 sm:gap-2">
+                              {feature.portions.map((portion, pIdx) => {
+                                const isBride = portion.side.toLowerCase().includes("bride");
+                                return (
+                                  <div
+                                    key={pIdx}
+                                    className={cn(
+                                      "p-2 sm:p-2.5 rounded-xl border backdrop-blur-md transition-all text-left",
+                                      isBride
+                                        ? "bg-gradient-to-r from-[#DB2777]/25 via-[#BE185D]/15 to-black/50 border-[#F472B6]/50 shadow-[0_4px_16px_rgba(219,39,119,0.15)]"
+                                        : "bg-gradient-to-r from-[#0284C7]/25 via-[#0369A1]/15 to-black/50 border-[#38BDF8]/50 shadow-[0_4px_16px_rgba(2,132,199,0.15)]"
+                                    )}
+                                  >
+                                    <div className="flex items-center justify-between gap-1.5 mb-1">
+                                      <span
+                                        className={cn(
+                                          "text-[9px] sm:text-[10px] font-cinzel font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border shrink-0",
+                                          isBride
+                                            ? "bg-[#DB2777]/40 text-pink-100 border-pink-400/50"
+                                            : "bg-[#0284C7]/40 text-sky-100 border-sky-400/50"
+                                        )}
+                                      >
+                                        {portion.side}
+                                      </span>
+                                      <span className="text-[11px] sm:text-xs font-serif-luxury font-bold text-amber-200 truncate">
+                                        {portion.eventName}
+                                      </span>
+                                    </div>
+
+                                    <div className="space-y-0.5 text-[10px] sm:text-[11px] font-sans-body">
+                                      <div className="flex items-center gap-1.5 text-amber-200">
+                                        <Clock className="w-3 h-3 text-[#D4AF37] shrink-0" />
+                                        <span>
+                                          Samapti Time: <strong className="text-white font-semibold">{portion.samaptiTime}</strong>
+                                        </span>
+                                      </div>
+                                      <a
+                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(portion.venue)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-start gap-1.5 text-sky-100/90 hover:text-white transition-colors group/map"
+                                      >
+                                        <MapPin className="w-3 h-3 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0 mt-0.5" />
+                                        <span className="leading-snug underline underline-offset-2 decoration-[#D4AF37]/50">{portion.venue} 📍</span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                );
+                              })}
                             </div>
-                          )}
-                        </div>
+
+                            {/* Shared Dress Code & Date */}
+                            <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-sans-body text-amber-200/90 pt-0.5">
+                              <span className="text-[#FFF9EF]/80">Tuesday, 8th Dec 2026</span>
+                              {feature.dressCode && (
+                                <div className="flex items-center gap-1 text-amber-200">
+                                  <Shirt className="w-3 h-3 text-[#D4AF37] shrink-0" />
+                                  <span>DRESS CODE: {feature.dressCode}</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        ) : (
+                          /* Timing & Venue Pills */
+                          <div className="space-y-1.5 text-[11px] sm:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90 pointer-events-auto">
+                            <div className="flex items-center gap-1.5 text-amber-200">
+                              <Clock className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                              <span className="truncate">{feature.time}</span>
+                            </div>
+                            {feature.venue && (
+                              <a
+                                href="https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1.5 text-amber-200 hover:text-amber-300 transition-colors group/map"
+                              >
+                                <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0" />
+                                <span className="truncate underline underline-offset-2 decoration-[#D4AF37]/60">{feature.venue} 📍</span>
+                              </a>
+                            )}
+                            {feature.dressCode && (
+                              <div className="flex items-center gap-1.5 text-amber-200">
+                                <Shirt className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                                <span className="truncate">DRESS CODE: {feature.dressCode}</span>
+                              </div>
+                            )}
+                          </div>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
