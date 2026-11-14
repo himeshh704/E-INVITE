@@ -247,7 +247,7 @@ export const WEDDING_DATA: WeddingData = {
       date: "December 2026",
       location: "Asansol",
       description: "Stepping into a lifetime of endless laughter, joint adventures, and unconditional companionship under divine grace.",
-      imageUrl: "/images/gallery/gallery_real_5.jpg",
+      imageUrl: "/images/gallery/gallery_real_6.jpg",
       caption: "Two hearts beating as one"
     }
   ],

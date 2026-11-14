@@ -37,12 +37,6 @@ const GALLERY_IMAGES: GalleryItem[] = [
   },
   {
     id: 5,
-    src: "/images/gallery/gallery_real_5.jpg",
-    title: "Pure Devotion",
-    caption: "Blessed with love, laughter, and waheguru's grace."
-  },
-  {
-    id: 6,
     src: "/images/gallery/gallery_real_6.jpg",
     title: "Cheers to Forever",
     caption: "Stepping into a glorious tomorrow as husband and wife."
@@ -110,18 +104,22 @@ export const CoupleStory: React.FC = () => {
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-4" />
         </div>
 
-        {/* Interactive Gallery Grid: 3-column responsive layout */}
+        {/* Interactive Gallery Grid: Balanced responsive layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {GALLERY_IMAGES.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: index * 0.12 }}
-              onClick={() => openLightbox(index)}
-              className="group relative cursor-pointer rounded-2xl overflow-hidden border-2 border-[#D4AF37]/60 bg-[#F0F9FF] shadow-lg hover:shadow-2xl hover:border-[#D4AF37] transition-all duration-500 aspect-[3/4]"
-            >
+          {GALLERY_IMAGES.map((item, index) => {
+            const isLandscape = item.id === 4;
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: index * 0.12 }}
+                onClick={() => openLightbox(index)}
+                className={`group relative cursor-pointer rounded-2xl overflow-hidden border-2 border-[#D4AF37]/60 bg-[#F0F9FF] shadow-lg hover:shadow-2xl hover:border-[#D4AF37] transition-all duration-500 ${
+                  isLandscape ? "sm:col-span-2 lg:col-span-2 aspect-[16/10]" : "aspect-[3/4]"
+                }`}
+              >
               {/* Photo */}
               <img
                 src={item.src}
@@ -151,7 +149,8 @@ export const CoupleStory: React.FC = () => {
                 <Heart className="w-4 h-4 fill-amber-300" />
               </div>
             </motion.div>
-          ))}
+          );
+        })}
         </div>
       </motion.div>
 
