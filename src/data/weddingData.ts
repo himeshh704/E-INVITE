@@ -69,6 +69,7 @@ export interface WeddingData {
   };
   weddingDateISO: string;
   formattedDate: string;
+  heroDate?: string;
   city: string;
   venueName: string;
   gurbaniBlessing: {
@@ -118,6 +119,7 @@ export const WEDDING_DATA: WeddingData = {
   },
   weddingDateISO: "2026-12-17T11:00:00",
   formattedDate: "17 December 2026",
+  heroDate: "15 to 17 December 2026",
   city: "Asansol, West Bengal",
   venueName: "The Grand, Murgasol, Asansol",
   gurbaniBlessing: {

@@ -231,7 +231,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           transition={{ duration: 0.8, delay: 0.55 }}
           className="text-lg sm:text-3xl font-cinzel font-semibold tracking-widest text-amber-200 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] mt-2"
         >
-          {WEDDING_DATA.formattedDate}
+          {WEDDING_DATA.heroDate || "15 to 17 December 2026"}
         </motion.p>
 
         <motion.p
