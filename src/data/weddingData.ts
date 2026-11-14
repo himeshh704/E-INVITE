@@ -99,8 +99,8 @@ export const WEDDING_DATA: WeddingData = {
       fullName: "Deep Singh",
       title: "The Groom",
       about: "A gentleman of honour, warm laughter, and quiet elegance. Dedicated to family heritage and walking life's path with devotion, joy, and faith.",
-      parents: "SD. Vicky Singh & SDR. Poonam Kaur",
-      grandparents: "Jameet Singh & Late Raj Kaur",
+      parents: "Sd. Vicky Singh & Sdr. Poonam Kaur",
+      grandparents: "Sd. Jameet Singh & Late Sdr. Raj Kaur",
       image: "/images/gallery/gallery_real_1.jpg"
     },
     bride: {

@@ -208,7 +208,7 @@ export const BowCardOpening: React.FC<BowCardOpeningProps> = ({ onOpen }) => {
 
               {/* Couple Names on the Card */}
               <div className="text-center mt-3 space-y-1">
-                <h1 className="text-3xl sm:text-5xl font-great-vibes text-[#0369A1] font-bold tracking-normal leading-tight">
+                <h1 className="text-3xl sm:text-5xl font-alex-brush text-[#0369A1] font-bold tracking-normal leading-tight">
                   Deep &amp; Ashi
                 </h1>
                 <p className="text-[11px] sm:text-xs font-cinzel font-semibold tracking-widest text-[#B45309] uppercase">

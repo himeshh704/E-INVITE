@@ -90,8 +90,8 @@ export const SpecialNotes: React.FC = () => {
                   variants={itemVariants}
                   className="space-y-1 p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-[#F472B6]/30 shadow-inner"
                 >
-                  <p className="font-bold text-[#FCE7F3] tracking-wider uppercase text-xl sm:text-2xl md:text-3xl font-serif-luxury drop-shadow-sm">
-                    SD. Satyajit Singh &amp; SDR. Amarpreet Kaur
+                  <p className="font-bold text-[#FCE7F3] tracking-wider text-xl sm:text-2xl md:text-3xl font-serif-luxury drop-shadow-sm">
+                    Sd. Satyajit Singh &amp; Sdr. Amarpreet Kaur
                   </p>
                   <p className="text-xs sm:text-sm text-[#F472B6] font-sans-body font-semibold tracking-wider">
                     (Parents of the Bride)
@@ -103,8 +103,8 @@ export const SpecialNotes: React.FC = () => {
                   variants={itemVariants}
                   className="space-y-1 p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-[#38BDF8]/30 shadow-inner"
                 >
-                  <p className="font-bold text-[#E0F2FE] tracking-wider uppercase text-xl sm:text-2xl md:text-3xl font-serif-luxury drop-shadow-sm">
-                    SD. Vicky Singh &amp; SDR. Poonam Kaur
+                  <p className="font-bold text-[#E0F2FE] tracking-wider text-xl sm:text-2xl md:text-3xl font-serif-luxury drop-shadow-sm">
+                    Sd. Vicky Singh &amp; Sdr. Poonam Kaur
                   </p>
                   <p className="text-xs sm:text-sm text-[#38BDF8] font-sans-body font-semibold tracking-wider">
                     (Parents of the Groom)
@@ -129,7 +129,7 @@ export const SpecialNotes: React.FC = () => {
               <div className="space-y-4">
                 <motion.div variants={itemVariants} className="space-y-0.5">
                   <p className="font-bold text-[#BAE6FD] text-lg sm:text-2xl font-serif-luxury tracking-wide">
-                    SD. Kesar Singh &amp; SDR. Jogendra Kaur
+                    Sd. Kesar Singh &amp; Sdr. Jogendra Kaur
                   </p>
                   <p className="text-xs sm:text-sm text-sky-200/70 font-sans-body">
                     (Grandparents of the Bride)
@@ -140,7 +140,7 @@ export const SpecialNotes: React.FC = () => {
 
                 <motion.div variants={itemVariants} className="space-y-0.5">
                   <p className="font-bold text-[#FBCFE8] text-lg sm:text-2xl font-serif-luxury tracking-wide">
-                    Jameet Singh &amp; Late Raj Kaur
+                    Sd. Jameet Singh &amp; Late Sdr. Raj Kaur
                   </p>
                   <p className="text-xs sm:text-sm text-pink-200/70 font-sans-body">
                     (Grandparents of the Groom)

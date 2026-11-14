@@ -121,9 +121,9 @@ export const InvitationBlessing: React.FC = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="my-4"
+            className="my-3"
           >
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-great-vibes text-[#C59B27] font-semibold tracking-wide drop-shadow-sm px-2">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-alex-brush text-[#C59B27] font-bold tracking-wide drop-shadow-sm px-2">
               {WEDDING_DATA.couple.groom.grandparents}
             </h3>
           </motion.div>
@@ -149,7 +149,7 @@ export const InvitationBlessing: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="my-5 space-y-1"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-great-vibes text-[#0369A1] font-bold tracking-normal leading-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-alex-brush text-[#0369A1] font-bold tracking-normal leading-tight">
               {WEDDING_DATA.couple.groom.fullName}
             </h2>
             <p className="text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium">
@@ -158,8 +158,8 @@ export const InvitationBlessing: React.FC = () => {
           </motion.div>
 
           {/* Connector Word */}
-          <div className="my-3">
-            <span className="text-sm sm:text-base font-great-vibes text-[#C59B27] italic px-4 font-semibold text-lg">
+          <div className="my-2">
+            <span className="text-lg sm:text-xl font-alex-brush text-[#C59B27] italic px-4 font-semibold">
               with
             </span>
           </div>
@@ -172,7 +172,7 @@ export const InvitationBlessing: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="my-5 space-y-1"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-great-vibes text-[#DB2777] font-bold tracking-normal leading-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-alex-brush text-[#DB2777] font-bold tracking-normal leading-tight">
               {WEDDING_DATA.couple.bride.fullName}
             </h2>
             <div className="space-y-0.5 text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium pt-1">
