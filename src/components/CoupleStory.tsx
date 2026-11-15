@@ -18,16 +18,16 @@ const GALLERY_IMAGES: GalleryItem[] = [
     caption: "Ashi & Deep in timeless warmth and serene togetherness."
   },
   {
-    id: 2,
-    src: "/images/gallery/gallery_real_2.jpg",
-    title: "Cherished Smiles",
-    caption: "Radiant laughter and hearts woven in divine harmony."
-  },
-  {
     id: 3,
     src: "/images/gallery/gallery_real_3.jpg",
     title: "Eternal Companions",
     caption: "Walking hand in hand toward a lifetime of togetherness."
+  },
+  {
+    id: 5,
+    src: "/images/gallery/gallery_real_6.jpg",
+    title: "Cheers to Forever",
+    caption: "Stepping into a glorious tomorrow as husband and wife."
   },
   {
     id: 4,
@@ -36,10 +36,10 @@ const GALLERY_IMAGES: GalleryItem[] = [
     caption: "Grand celebrations and moments carved into golden memories."
   },
   {
-    id: 5,
-    src: "/images/gallery/gallery_real_6.jpg",
-    title: "Cheers to Forever",
-    caption: "Stepping into a glorious tomorrow as husband and wife."
+    id: 2,
+    src: "/images/gallery/gallery_real_2.jpg",
+    title: "Cherished Smiles",
+    caption: "Radiant laughter and hearts woven in divine harmony."
   }
 ];
 
