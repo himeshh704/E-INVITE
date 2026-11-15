@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Copy, Check, Sparkles, Heart, ExternalLink } from 'lucide-react';
+import { Copy, Check, Sparkles, ExternalLink } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { WEDDING_DATA } from '../data/weddingData';
 import { soundEngine } from '../utils/soundEffects';
@@ -219,90 +219,11 @@ export const InstagramHashtag: React.FC = () => {
           </div>
         </div>
 
-        {/* Live Instagram Feed Teaser Showcase */}
-        <div className="rounded-3xl p-6 sm:p-8 bg-[#FDF8EE] border border-[#D4AF37]/40 shadow-inner">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-6">
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 p-0.5">
-                <img
-                  src="/images/ad_monogram.png"
-                  alt="A&D Royal Profile"
-                  className="w-full h-full rounded-full object-contain bg-white p-0.5"
-                />
-              </div>
-              <div>
-                <span className="text-sm font-sans-body font-bold text-[#0F172A] block leading-tight">
-                  @deep_ashi_celebrations
-                </span>
-                <span className="text-[11px] font-sans-body text-[#64748B]">
-                  Official Wedding Handles • Asansol
-                </span>
-              </div>
-            </div>
-
-            <span className="text-xs font-cinzel font-bold text-[#0369A1] uppercase tracking-wider">
-              {primaryTag.tag}
-            </span>
-          </div>
-
-          {/* 3 Real Gallery Cards Styled as Instagram Posts */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              {
-                img: '/images/gallery/gallery_real_1.jpg',
-                tag: primaryTag.tag,
-                likes: '1.2k',
-                caption: 'Pure royal love & timeless laughter.',
-              },
-              {
-                img: '/images/gallery/gallery_real_2.jpg',
-                tag: '#ADRoyalWedding',
-                likes: '980',
-                caption: 'Ashi looking radiant ahead of Anand Karaj.',
-              },
-              {
-                img: '/images/gallery/gallery_real_3.jpg',
-                tag: '#DuaSeHora',
-                likes: '1.5k',
-                caption: 'Two families united by Waheguru’s divine grace.',
-              },
-            ].map((post, idx) => (
-              <div
-                key={idx}
-                className="group relative rounded-2xl overflow-hidden bg-white border border-[#D4AF37]/30 shadow-md flex flex-col"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden bg-slate-100">
-                  <img
-                    src={post.img}
-                    alt={`Instagram moment ${idx + 1}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* Heart overlay on hover */}
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 text-white">
-                    <span className="flex items-center gap-1 font-bold text-sm">
-                      <Heart className="w-5 h-5 fill-rose-500 text-rose-500" /> {post.likes}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-3.5 space-y-1">
-                  <span className="text-xs font-bold text-[#0369A1] font-sans-body block">
-                    {post.tag}
-                  </span>
-                  <p className="text-xs font-sans-body text-[#64748B] line-clamp-1">
-                    {post.caption}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* How to Tag Guide */}
-          <div className="mt-8 pt-6 border-t border-[#D4AF37]/30 text-center">
-            <p className="text-xs font-sans-body text-[#5E4B37] font-medium">
-              ✨ <strong>How to feature:</strong> Take reels &amp; pictures during any function &bull; Tag <strong className="text-[#0369A1]">#DeepInLoveWithAshi</strong> &bull; Share your warm wishes with both families!
-            </p>
-          </div>
+        {/* Simple Note on Tagging */}
+        <div className="mt-8 pt-6 border-t border-[#D4AF37]/30 text-center">
+          <p className="text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium">
+            ✨ <strong>Tag on Instagram:</strong> Use these hashtags in your reels, posts, and stories to share your warm wishes with both families!
+          </p>
         </div>
 
       </div>
