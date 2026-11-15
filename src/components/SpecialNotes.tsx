@@ -140,7 +140,7 @@ export const SpecialNotes: React.FC = () => {
 
                 <motion.div variants={itemVariants} className="space-y-0.5">
                   <p className="font-bold text-[#FBCFE8] text-lg sm:text-2xl font-serif-luxury tracking-wide">
-                    Sd. Jameet Singh &amp; Late Sdr. Raj Kaur
+                    Sd. Jamit Singh &amp; Late Sdr. Raj Kaur
                   </p>
                   <p className="text-xs sm:text-sm text-pink-200/70 font-sans-body">
                     (Grandparents of the Groom)
