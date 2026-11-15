@@ -1,10 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { Sparkles, Heart } from 'lucide-react';
+import { Sparkles, Heart, Copy, Check } from 'lucide-react';
+import { useWeddingSide } from '../context/SideContext';
+import { soundEngine } from '../utils/soundEffects';
 
 export const SpecialNotes: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { setSide, isGroomSide, groomLink, brideLink } = useWeddingSide();
+  const [copied, setCopied] = useState(false);
+
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start']
@@ -31,6 +37,67 @@ export const SpecialNotes: React.FC = () => {
       transition: { duration: 0.8, ease: "easeInOut" },
     },
   };
+
+  const handleCopyLink = () => {
+    const link = isGroomSide ? groomLink : brideLink;
+    navigator.clipboard.writeText(link);
+    setCopied(true);
+    soundEngine.playChime();
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  // Reusable Family Cards
+  const brideParentsCard = (
+    <motion.div
+      key="bride-parents"
+      variants={itemVariants}
+      className="space-y-1 p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-[#F472B6]/30 shadow-inner"
+    >
+      <p className="font-bold text-[#FCE7F3] tracking-wider text-xl sm:text-2xl md:text-3xl font-serif-luxury drop-shadow-sm">
+        Sd. Satyajit Singh &amp; Sdr. Amarpreet Kaur
+      </p>
+      <p className="text-xs sm:text-sm text-[#F472B6] font-sans-body font-semibold tracking-wider">
+        (Parents of the Bride)
+      </p>
+    </motion.div>
+  );
+
+  const groomParentsCard = (
+    <motion.div
+      key="groom-parents"
+      variants={itemVariants}
+      className="space-y-1 p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-[#38BDF8]/30 shadow-inner"
+    >
+      <p className="font-bold text-[#E0F2FE] tracking-wider text-xl sm:text-2xl md:text-3xl font-serif-luxury drop-shadow-sm">
+        Sd. Vicky Singh &amp; Sdr. Poonam Kaur
+      </p>
+      <p className="text-xs sm:text-sm text-[#38BDF8] font-sans-body font-semibold tracking-wider">
+        (Parents of the Groom)
+      </p>
+    </motion.div>
+  );
+
+  const brideGrandparentsCard = (
+    <motion.div key="bride-grandparents" variants={itemVariants} className="space-y-0.5">
+      <p className="font-bold text-[#BAE6FD] text-lg sm:text-2xl font-serif-luxury tracking-wide">
+        Sd. Kesar Singh &amp; Sdr. Jogendra Kaur
+      </p>
+      <p className="text-xs sm:text-sm text-sky-200/70 font-sans-body">
+        (Grandparents of the Bride)
+      </p>
+    </motion.div>
+  );
+
+  const groomGrandparentsCard = (
+    <motion.div key="groom-grandparents" variants={itemVariants} className="space-y-0.5">
+      <p className="font-bold text-[#FBCFE8] text-lg sm:text-2xl font-serif-luxury tracking-wide">
+        Sd. Jamit Singh &amp; Late Sdr. Raj Kaur
+      </p>
+      <p className="text-xs sm:text-sm text-pink-200/70 font-sans-body">
+        (Grandparents of the Groom)
+      </p>
+    </motion.div>
+  );
 
   return (
     <section
@@ -64,11 +131,43 @@ export const SpecialNotes: React.FC = () => {
             <Sparkles className="w-4 h-4 text-[#FDE68A] animate-pulse" />
           </div>
 
-          <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.35em] text-[#D4AF37] uppercase block mb-6">
+          <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.35em] text-[#D4AF37] uppercase block mb-3">
             A Cordial Invitation
           </span>
 
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-10" />
+          {/* Perspective View Selector (Bride's Side / Groom's Side) */}
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <button
+              type="button"
+              onClick={() => {
+                setSide('bride');
+                soundEngine.playChime();
+              }}
+              className={`px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-cinzel font-bold tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
+                !isGroomSide
+                  ? 'bg-gradient-to-r from-[#F472B6]/30 to-[#FB7185]/30 border-2 border-[#F472B6] text-[#FCE7F3] shadow-[0_0_15px_rgba(244,114,182,0.4)] scale-105'
+                  : 'bg-white/5 border border-white/10 text-white/50 hover:text-white/80 hover:bg-white/10'
+              }`}
+            >
+              <span>🌸</span> Bride's Side View
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSide('groom');
+                soundEngine.playChime();
+              }}
+              className={`px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-cinzel font-bold tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
+                isGroomSide
+                  ? 'bg-gradient-to-r from-[#38BDF8]/30 to-[#0284C7]/30 border-2 border-[#38BDF8] text-[#E0F2FE] shadow-[0_0_15px_rgba(56,189,248,0.4)] scale-105'
+                  : 'bg-white/5 border border-white/10 text-white/50 hover:text-white/80 hover:bg-white/10'
+              }`}
+            >
+              <span>👑</span> Groom's Side View
+            </button>
+          </div>
+
+          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-8" />
 
           {/* Staggered Typography Content */}
           <motion.div
@@ -84,32 +183,19 @@ export const SpecialNotes: React.FC = () => {
                 With Love &amp; Blessings From Both Families
               </span>
 
+              {/* Parents Section - In Groom view, Groom's side is rendered on top! */}
               <div className="space-y-6">
-                {/* Bride's Parents */}
-                <motion.div
-                  variants={itemVariants}
-                  className="space-y-1 p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-[#F472B6]/30 shadow-inner"
-                >
-                  <p className="font-bold text-[#FCE7F3] tracking-wider text-xl sm:text-2xl md:text-3xl font-serif-luxury drop-shadow-sm">
-                    Sd. Satyajit Singh &amp; Sdr. Amarpreet Kaur
-                  </p>
-                  <p className="text-xs sm:text-sm text-[#F472B6] font-sans-body font-semibold tracking-wider">
-                    (Parents of the Bride)
-                  </p>
-                </motion.div>
-
-                {/* Groom's Parents */}
-                <motion.div
-                  variants={itemVariants}
-                  className="space-y-1 p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-[#38BDF8]/30 shadow-inner"
-                >
-                  <p className="font-bold text-[#E0F2FE] tracking-wider text-xl sm:text-2xl md:text-3xl font-serif-luxury drop-shadow-sm">
-                    Sd. Vicky Singh &amp; Sdr. Poonam Kaur
-                  </p>
-                  <p className="text-xs sm:text-sm text-[#38BDF8] font-sans-body font-semibold tracking-wider">
-                    (Parents of the Groom)
-                  </p>
-                </motion.div>
+                {isGroomSide ? (
+                  <>
+                    {groomParentsCard}
+                    {brideParentsCard}
+                  </>
+                ) : (
+                  <>
+                    {brideParentsCard}
+                    {groomParentsCard}
+                  </>
+                )}
               </div>
             </motion.div>
 
@@ -120,32 +206,26 @@ export const SpecialNotes: React.FC = () => {
               <div className="w-16 h-[1px] bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
             </motion.div>
 
-            {/* 2. Grandparents Blessings */}
+            {/* 2. Grandparents Blessings - In Groom view, Groom's grandparents are rendered on top! */}
             <motion.div variants={itemVariants} className="space-y-6">
               <span className="text-xs sm:text-sm font-cinzel font-bold uppercase tracking-[0.25em] text-[#FDE68A] block drop-shadow-sm">
                 With Celestial Blessings of Grandparents
               </span>
 
               <div className="space-y-4">
-                <motion.div variants={itemVariants} className="space-y-0.5">
-                  <p className="font-bold text-[#BAE6FD] text-lg sm:text-2xl font-serif-luxury tracking-wide">
-                    Sd. Kesar Singh &amp; Sdr. Jogendra Kaur
-                  </p>
-                  <p className="text-xs sm:text-sm text-sky-200/70 font-sans-body">
-                    (Grandparents of the Bride)
-                  </p>
-                </motion.div>
-
-                <div className="w-12 h-[1px] bg-white/10 mx-auto" />
-
-                <motion.div variants={itemVariants} className="space-y-0.5">
-                  <p className="font-bold text-[#FBCFE8] text-lg sm:text-2xl font-serif-luxury tracking-wide">
-                    Sd. Jamit Singh &amp; Late Sdr. Raj Kaur
-                  </p>
-                  <p className="text-xs sm:text-sm text-pink-200/70 font-sans-body">
-                    (Grandparents of the Groom)
-                  </p>
-                </motion.div>
+                {isGroomSide ? (
+                  <>
+                    {groomGrandparentsCard}
+                    <div className="w-12 h-[1px] bg-white/10 mx-auto" />
+                    {brideGrandparentsCard}
+                  </>
+                ) : (
+                  <>
+                    {brideGrandparentsCard}
+                    <div className="w-12 h-[1px] bg-white/10 mx-auto" />
+                    {groomGrandparentsCard}
+                  </>
+                )}
               </div>
             </motion.div>
 
@@ -157,6 +237,22 @@ export const SpecialNotes: React.FC = () => {
               <p className="text-xl sm:text-2xl font-cinzel font-bold text-[#FDE68A] tracking-[0.2em] uppercase drop-shadow-sm">
                 HORA &amp; DUA
               </p>
+            </motion.div>
+
+            {/* Quick Copy Link for Active View */}
+            <motion.div variants={itemVariants} className="pt-2 flex items-center justify-center">
+              <button
+                type="button"
+                onClick={handleCopyLink}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-cinzel tracking-wider text-[#D4AF37] hover:text-[#FDE68A] bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/40 transition-all duration-200 active:scale-95 shadow-sm"
+              >
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>
+                  {copied
+                    ? `Copied ${isGroomSide ? "Groom's" : "Bride's"} Link!`
+                    : `Copy ${isGroomSide ? "Groom's" : "Bride's"} Invitation Link`}
+                </span>
+              </button>
             </motion.div>
           </motion.div>
 

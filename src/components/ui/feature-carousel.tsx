@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { soundEngine } from "../../utils/soundEffects";
+import { useWeddingSide } from "../../context/SideContext";
 
 export interface EventPortion {
   side: string;
@@ -137,6 +138,8 @@ const EVENTS_DATA: EventFeatureItem[] = [
 ];
 
 export function FeatureCarousel() {
+  const { isGroomSide } = useWeddingSide();
+
   const scrollToEvent = useCallback((id: string) => {
     soundEngine.playClick();
     const el = document.getElementById(`event-${id}`);
@@ -144,6 +147,13 @@ export function FeatureCarousel() {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, []);
+
+  const getEventSublabel = (event: EventFeatureItem) => {
+    if (event.id === "path-samapti") {
+      return isGroomSide ? "13 Dec (Groom) • 8 Dec (Bride)" : "8 Dec (Bride) • 13 Dec (Groom)";
+    }
+    return event.sublabel;
+  };
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-8">
@@ -153,7 +163,8 @@ export function FeatureCarousel() {
           Jump to:
         </span>
         {EVENTS_DATA.map((event, idx) => {
-          const shortDate = event.sublabel.split("•")[0].trim();
+          const sublabel = getEventSublabel(event);
+          const shortDate = sublabel.split("•")[0].trim();
           return (
             <button
               key={event.id}
@@ -166,6 +177,7 @@ export function FeatureCarousel() {
           );
         })}
       </div>
+
 
       {/* 2. Natural Vertical Scroll Stream of Event Cards */}
       <div className="space-y-12 sm:space-y-16">
@@ -210,7 +222,7 @@ export function FeatureCarousel() {
                   <div className="absolute bottom-3 inset-x-4 sm:bottom-4 sm:inset-x-6 z-10 space-y-1">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-amber-300/40 text-amber-300 text-xs font-cinzel font-bold uppercase tracking-wider">
                       <IconComponent className="w-3.5 h-3.5 text-amber-300" />
-                      <span>{event.sublabel}</span>
+                      <span>{getEventSublabel(event)}</span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif-luxury font-bold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
                       {event.label}
@@ -229,8 +241,12 @@ export function FeatureCarousel() {
                   {event.portions ? (
                     <div className="space-y-3 pt-1">
                       <div className="grid grid-cols-1 gap-2.5 sm:gap-3">
-                        {event.portions.map((portion, pIdx) => {
+                        {(isGroomSide && event.id === "path-samapti"
+                          ? [...event.portions].reverse()
+                          : event.portions
+                        ).map((portion, pIdx) => {
                           const isBride = portion.side.toLowerCase().includes("bride");
+
                           return (
                             <div
                               key={pIdx}
