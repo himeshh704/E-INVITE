@@ -45,11 +45,11 @@ const EVENTS_DATA: EventFeatureItem[] = [
   {
     id: "path-samapti",
     label: "Path Samapti",
-    sublabel: "8 Dec • 12:00 PM (Bride) / 9:30 AM (Groom)",
+    sublabel: "8 Dec (Bride) • 13 Dec (Groom)",
     icon: Sparkles,
     image: "/images/ad_event_sahej_path.jpg",
     venue: "Dhanbad & Asansol Gurudwaras",
-    time: "Tuesday, 8th Dec 2026",
+    time: "8th Dec (Bride) & 13th Dec (Groom)",
     dressCode: "Traditional / Head Covered",
     description: "Seeking the supreme divine blessings of Sri Guru Granth Sahib Ji as we commence the auspicious wedding celebrations of Ashi & Deep.",
     portions: [
@@ -63,7 +63,7 @@ const EVENTS_DATA: EventFeatureItem[] = [
       {
         side: "Groom’s Side",
         eventName: "Akhand Path Samapti",
-        date: "8th Dec 2026",
+        date: "13th Dec 2026",
         samaptiTime: "9:30 AM",
         venue: "Baba Deep Singh Ji Gurudwara, Dhruv Dangal, Asansol",
       },
@@ -291,7 +291,7 @@ export function FeatureCarousel() {
 
                       {/* Shared Dress Code Banner */}
                       <div className="p-3 rounded-xl bg-white/[0.05] border border-amber-300/30 flex items-center justify-between flex-wrap gap-2 text-xs font-sans-body">
-                        <span className="text-white/80">Tuesday, 8th Dec 2026</span>
+                        <span className="text-white/80">8th &amp; 13th Dec 2026</span>
                         <div className="flex items-center gap-1.5 text-amber-200 font-medium">
                           <Shirt className="w-3.5 h-3.5 text-amber-300" />
                           <span>DRESS CODE: <strong className="text-white">{event.dressCode}</strong></span>

@@ -143,17 +143,17 @@ export const WEDDING_DATA: WeddingData = {
       id: "path-samapti",
       name: "Path Samapti",
       tagline: "Commencement of Divine Blessings",
-      date: "8 December 2026",
-      formattedDate: "Tuesday, 8th December 2026",
-      time: "Samapti: 12:00 PM (Bride) / 9:30 AM (Groom)",
+      date: "8 & 13 December 2026",
+      formattedDate: "8th Dec (Bride) & 13th Dec (Groom)",
+      time: "Samapti: 12:00 PM (Bride, 8 Dec) / 9:30 AM (Groom, 13 Dec)",
       venue: "Gurudwara Gurunanak Pura, Dhanbad (Bride) & Baba Deep Singh Ji Gurudwara, Asansol (Groom)",
       address: "Dhanbad & Asansol",
       city: "Dhanbad / Asansol",
       dressCode: "Traditional / Formal (Head Covered)",
-      description: "Seeking the supreme divine blessings of Sri Guru Granth Sahib Ji as we inaugurate the holy wedding festivities of Ashi & Deep. Sahej Path Samapti at 12:00 PM at Gurudwara Gurunanak Pura, Dhanbad (Bride's Side) & Akhand Path Samapti at 9:30 AM at Baba Deep Singh Ji Gurudwara, Asansol (Groom's Side).",
+      description: "Seeking the supreme divine blessings of Sri Guru Granth Sahib Ji as we inaugurate the holy wedding festivities of Ashi & Deep. Sahej Path Samapti on 8th Dec at 12:00 PM at Gurudwara Gurunanak Pura, Dhanbad (Bride's Side) & Akhand Path Samapti on 13th Dec at 9:30 AM at Baba Deep Singh Ji Gurudwara, Asansol (Groom's Side).",
       iconName: "Sparkles",
       googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Gurudwara+Gurunanak+Pura+Dhanbad",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Path+Samapti+-+Deep+weds+Ashi&dates=20261208T040000Z/20261208T070000Z&details=Path+Samapti+Celebrations&location=Gurudwara+Gurunanak+Pura,+Dhanbad"
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Path+Samapti+-+Deep+weds+Ashi&dates=20261208T040000Z/20261213T070000Z&details=Path+Samapti+Celebrations&location=Gurudwara+Gurunanak+Pura,+Dhanbad"
     },
     {
       id: "ring-ceremony",
