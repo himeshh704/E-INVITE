@@ -141,38 +141,12 @@ export const InvitationBlessing: React.FC = () => {
             </p>
           </div>
 
-          {/* Groom Section */}
-          <motion.div
-            initial={{ y: 15, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="my-5 space-y-1"
-          >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-alex-brush text-[#0369A1] font-bold tracking-normal leading-tight">
-              {WEDDING_DATA.couple.groom.fullName}
-            </h2>
-            <div className="space-y-0.5 text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium pt-1">
-              <p className="text-xs sm:text-sm text-[#5E4B37]/90 font-medium">
-                (G/s. {WEDDING_DATA.couple.groom.grandparents})
-              </p>
-              <p>(S/o. {WEDDING_DATA.couple.groom.parents})</p>
-            </div>
-          </motion.div>
-
-          {/* Connector Word */}
-          <div className="my-2">
-            <span className="text-lg sm:text-xl font-alex-brush text-[#C59B27] italic px-4 font-semibold">
-              with
-            </span>
-          </div>
-
           {/* Bride Section */}
           <motion.div
             initial={{ y: 15, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5 }}
             className="my-5 space-y-1"
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-alex-brush text-[#DB2777] font-bold tracking-normal leading-tight">
@@ -183,6 +157,32 @@ export const InvitationBlessing: React.FC = () => {
                 (G/d. {WEDDING_DATA.couple.bride.grandparents})
               </p>
               <p>(D/o. {WEDDING_DATA.couple.bride.parents})</p>
+            </div>
+          </motion.div>
+
+          {/* Connector Word */}
+          <div className="my-2">
+            <span className="text-lg sm:text-xl font-alex-brush text-[#C59B27] italic px-4 font-semibold">
+              with
+            </span>
+          </div>
+
+          {/* Groom Section */}
+          <motion.div
+            initial={{ y: 15, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="my-5 space-y-1"
+          >
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-alex-brush text-[#0369A1] font-bold tracking-normal leading-tight">
+              {WEDDING_DATA.couple.groom.fullName}
+            </h2>
+            <div className="space-y-0.5 text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium pt-1">
+              <p className="text-xs sm:text-sm text-[#5E4B37]/90 font-medium">
+                (G/s. {WEDDING_DATA.couple.groom.grandparents})
+              </p>
+              <p>(S/o. {WEDDING_DATA.couple.groom.parents})</p>
             </div>
           </motion.div>
 

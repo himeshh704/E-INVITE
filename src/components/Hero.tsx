@@ -217,11 +217,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           transition={{ duration: 1, delay: 0.35 }}
           className="text-4xl sm:text-7xl md:text-8xl font-serif-luxury font-bold tracking-tight text-white drop-shadow-[0_8px_25px_rgba(0,0,0,0.85)] my-2 leading-none"
         >
-          <span className="text-[#BAE6FD]">Deep</span>
+          <span className="text-[#FBCFE8]">Ashi</span>
           <span className="font-great-vibes text-amber-300 mx-3 text-3xl sm:text-6xl md:text-7xl font-normal drop-shadow">
             weds
           </span>
-          <span className="text-[#FBCFE8]">Ashi</span>
+          <span className="text-[#BAE6FD]">Deep</span>
         </motion.h1>
 
         {/* Date Callout */}

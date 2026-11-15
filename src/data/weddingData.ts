@@ -124,7 +124,7 @@ export const WEDDING_DATA: WeddingData = {
       { tag: "#DeepKiAshi", label: "Sangeet & Bhangra Beats", primary: false },
       { tag: "#ADRoyalWedding", label: "Anand Karaj Nuptials", primary: false }
     ],
-    heading: "Deep weds Ashi",
+    heading: "Ashi weds Deep",
     subheading: "WEDDING INVITATION",
     openingFamily: "The Hora & Dua Family",
     rsvpFamily: "HORA & DUA"
