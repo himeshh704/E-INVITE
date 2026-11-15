@@ -1,49 +1,52 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import { FeatureCarousel } from './ui/feature-carousel';
 
 export const Celebrations: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start']
-  });
-
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [-20, 20]);
-
   return (
-    <section ref={sectionRef} id="celebrations" className="relative py-8 sm:py-20 px-0 sm:px-6 md:px-12 bg-gradient-to-b from-[#E8F3F8] via-[#FDF2F8] to-[#E0F2FE] text-[#1E293B] overflow-hidden min-h-screen flex flex-col items-center justify-center">
-      
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-sky-200/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-pink-200/30 rounded-full blur-3xl pointer-events-none" />
+    <section
+      ref={sectionRef}
+      id="celebrations"
+      className="relative py-14 sm:py-24 px-3 sm:px-6 md:px-12 bg-gradient-to-b from-[#081226] via-[#101B38] to-[#0A1128] text-white overflow-hidden min-h-screen"
+    >
+      {/* Background Ambient Glow Orbs */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#0284C7]/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-10 w-[500px] h-[500px] bg-[#DB2777]/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-3/4 left-10 w-[450px] h-[450px] bg-[#D4AF37]/15 rounded-full blur-[120px] pointer-events-none" />
 
-      <motion.div style={{ y: parallaxY }} className="w-full max-w-7xl mx-auto relative z-10 px-0 sm:px-2">
-        
+      {/* Subtle Royal Starlight Dust Lattice */}
+      <div 
+        className="absolute inset-0 opacity-15 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(212, 175, 55, 0.4) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+
+      <div className="w-full max-w-4xl mx-auto relative z-10 px-0 sm:px-2">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-10 px-4 space-y-1.5 sm:space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1 rounded-full bg-white/80 border border-[#D4AF37]/50 text-[#0284C7] shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4AF37]" />
-            <span className="text-[10px] sm:text-xs uppercase font-cinzel tracking-[0.25em] font-bold text-[#0369A1]">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 px-4 space-y-2 sm:space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-md border border-[#D4AF37]/50 text-amber-200 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+            <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+            <span className="text-[10px] sm:text-xs uppercase font-cinzel tracking-[0.25em] font-bold text-amber-200">
               WEDDING CELEBRATION PROGRAMME
             </span>
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4AF37]" />
+            <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif-luxury font-bold text-[#0F172A] tracking-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif-luxury font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FDE68A] via-[#F59E0B] to-[#FDE68A] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] tracking-tight">
             Events &amp; Ceremonies
           </h2>
-          <p className="text-xs sm:text-sm font-cormorant italic text-[#64748B] max-w-xl mx-auto hidden sm:block">
-            Explore the sacred Anand Karaj festivities, venues, timings, and celebratory gatherings for Ashi &amp; Deep.
+          <p className="text-xs sm:text-sm font-sans-body text-sky-100/90 max-w-lg mx-auto leading-relaxed">
+            Scroll down to view each sacred ceremony, timings, dress codes, and directions for Ashi &amp; Deep.
           </p>
         </div>
 
-        {/* Feature Carousel Component for Events */}
+        {/* Vertical Event Cards Stream */}
         <FeatureCarousel />
-
-      </motion.div>
+      </div>
     </section>
   );
 };

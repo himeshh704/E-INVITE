@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useCallback } from "react";
+import { motion } from "framer-motion";
 import {
   Sparkles,
   Heart,
@@ -11,10 +11,12 @@ import {
   Music,
   Clock,
   Shirt,
-  ChevronLeft,
-  ChevronRight
+  Calendar,
+  ExternalLink,
+  ChevronDown
 } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { soundEngine } from "../../utils/soundEffects";
 
 export interface EventPortion {
   side: string;
@@ -34,6 +36,8 @@ export interface EventFeatureItem {
   time: string;
   dressCode: string;
   description: string;
+  googleMapsUrl?: string;
+  calendarLink?: string;
   portions?: EventPortion[];
 }
 
@@ -41,13 +45,13 @@ const EVENTS_DATA: EventFeatureItem[] = [
   {
     id: "path-samapti",
     label: "Path Samapti",
-    sublabel: "8 Dec • 9:30 AM",
+    sublabel: "8 Dec • 12:00 PM (Bride) / 9:30 AM (Groom)",
     icon: Sparkles,
     image: "/images/ad_event_sahej_path.jpg",
     venue: "Dhanbad & Asansol Gurudwaras",
-    time: "Tuesday, 8th Dec • Samapti: 9:30 AM",
+    time: "Tuesday, 8th Dec 2026",
     dressCode: "Traditional / Head Covered",
-    description: "Seeking the divine blessings of Sri Guru Granth Sahib Ji as we commence the wedding celebrations of Ashi & Deep.",
+    description: "Seeking the supreme divine blessings of Sri Guru Granth Sahib Ji as we commence the auspicious wedding celebrations of Ashi & Deep.",
     portions: [
       {
         side: "Bride’s Side",
@@ -72,9 +76,11 @@ const EVENTS_DATA: EventFeatureItem[] = [
     icon: Wine,
     image: "/images/ad_event_ring_ceremony.jpg",
     venue: "The Grand, Murgasol, Asansol",
-    time: "Tuesday, 15th Dec • 7:00 PM Onwards",
+    time: "Tuesday, 15th Dec 2026 • 7:00 PM Onwards",
     dressCode: "Evening Glitz & Glamour",
     description: "An evening of sparkling rings, champagne toasts, melodious music, and celebrating the beginning of forever.",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Grand+Murgasol+Asansol",
+    calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ring+Ceremony+-+Cheers+to+Forever+-+Deep+weds+Ashi&dates=20261215T133000Z/20261215T173000Z&details=Cheers+to+Forever+Ring+Ceremony&location=The+Grand,+Murgasol,+Asansol",
   },
   {
     id: "phoolon-ki-haldi",
@@ -83,9 +89,11 @@ const EVENTS_DATA: EventFeatureItem[] = [
     icon: Sun,
     image: "/images/ad_event_haldi.jpg",
     venue: "The Grand, Murgasol, Asansol",
-    time: "Wednesday, 16th Dec • 11:00 AM Onwards",
+    time: "Wednesday, 16th Dec 2026 • 11:00 AM Onwards",
     dressCode: "Hot Pink for Ladies",
     description: "A joyous celebration of auspicious turmeric, a shower of fragrant rose petals, dholki tunes, and bright smiles.",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Grand+Murgasol+Asansol",
+    calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Phoolon+ki+Haldi+-+Deep+weds+Ashi&dates=20261216T053000Z/20261216T093000Z&details=Phoolon+Ki+Haldi+Celebration&location=The+Grand,+Murgasol,+Asansol",
   },
   {
     id: "band-baaja-brigade",
@@ -94,9 +102,11 @@ const EVENTS_DATA: EventFeatureItem[] = [
     icon: Music,
     image: "/images/ad_event_baraat.jpg",
     venue: "The Grand, Murgasol, Asansol",
-    time: "Wednesday, 16th Dec • 7:00 PM Onwards",
+    time: "Wednesday, 16th Dec 2026 • 7:00 PM Onwards",
     dressCode: "Royal Festive Punjabi",
     description: "High-octane Punjabi dhol beats, brass band fanfare, and energetic bhangra as the groom's brigade arrives in grand style!",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Grand+Murgasol+Asansol",
+    calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Band+Baaja+Brigade+Baraat+-+Deep+weds+Ashi&dates=20261216T133000Z/20261216T173000Z&details=Band+Baaja+Brigade+Baraat+Celebration&location=The+Grand,+Murgasol,+Asansol",
   },
   {
     id: "anand-karaj",
@@ -104,10 +114,12 @@ const EVENTS_DATA: EventFeatureItem[] = [
     sublabel: "17 Dec • 11:00 AM",
     icon: Heart,
     image: "/images/ad_event_anand_karaj.jpg",
-    venue: "Shri Guru Nanak Gurudwara (Lunch @ The Grand)",
-    time: "Thursday, 17th Dec • 11:00 AM Onwards",
+    venue: "Shri Guru Nanak Gurudwara, Asansol (Followed by Lunch @ The Grand)",
+    time: "Thursday, 17th Dec 2026 • 11:00 AM Onwards",
     dressCode: "Pastel Elegance / Gurdwara Formal",
-    description: "The holy Four Laavan nuptials uniting Ashi & Deep into one spiritual light before Sri Guru Granth Sahib Ji, followed by lunch at The Grand.",
+    description: "The holy Four Laavan nuptials uniting Ashi & Deep into one spiritual light before Sri Guru Granth Sahib Ji, followed by celebratory lunch at The Grand.",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Shri+Guru+Nanak+Gurudwara+Asansol",
+    calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Blissful+Union+Anand+Karaj+-+Deep+weds+Ashi&dates=20261217T053000Z/20261217T093000Z&details=Anand+Karaj+Wedding+Ceremony+followed+by+Lunch+at+The+Grand&location=Shri+Guru+Nanak+Gurudwara,+Asansol",
   },
   {
     id: "reception-party",
@@ -116,347 +128,263 @@ const EVENTS_DATA: EventFeatureItem[] = [
     icon: Sparkles,
     image: "/images/ad_event_reception.jpg",
     venue: "Asansol Club, Asansol",
-    time: "Saturday, 19th Dec • 7:00 PM Onwards",
+    time: "Saturday, 19th Dec 2026 • 7:00 PM Onwards",
     dressCode: "Black Tie & Indian Regal Formals",
-    description: "A gala night of music, gourmet dining, and celebrations welcoming the newlyweds Ashi & Deep into married life.",
+    description: "A gala night of soulful music, gourmet dining, and celebrations welcoming the newlyweds Ashi & Deep into married life.",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Asansol+Club+Asansol",
+    calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Grand+Reception+Party+-+Deep+weds+Ashi&dates=20261219T133000Z/20261219T183000Z&details=Grand+Wedding+Reception+Party&location=Asansol+Club,+Asansol",
   },
 ];
 
-const ITEM_HEIGHT = 68;
-
-const wrap = (min: number, max: number, v: number) => {
-  const rangeSize = max - min;
-  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
-};
-
 export function FeatureCarousel() {
-  const [step, setStep] = useState(0);
-
-  const currentIndex =
-    ((step % EVENTS_DATA.length) + EVENTS_DATA.length) % EVENTS_DATA.length;
-
-  const nextStep = useCallback(() => {
-    setStep((prev) => prev + 1);
+  const scrollToEvent = useCallback((id: string) => {
+    soundEngine.playClick();
+    const el = document.getElementById(`event-${id}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, []);
-
-  const prevStep = useCallback(() => {
-    setStep((prev) => prev - 1);
-  }, []);
-
-  const handleChipClick = (index: number) => {
-    setStep(index);
-  };
-
-  const getCardStatus = (index: number) => {
-    const diff = index - currentIndex;
-    const len = EVENTS_DATA.length;
-
-    let normalizedDiff = diff;
-    if (diff > len / 2) normalizedDiff -= len;
-    if (diff < -len / 2) normalizedDiff += len;
-
-    if (normalizedDiff === 0) return "active";
-    if (normalizedDiff === -1) return "prev";
-    if (normalizedDiff === 1) return "next";
-    return "hidden";
-  };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-0 sm:px-4 md:p-4">
-      <div className="relative overflow-hidden rounded-none sm:rounded-[2.5rem] lg:rounded-[3.5rem] flex flex-col lg:flex-row min-h-[88vh] lg:min-h-[580px] lg:aspect-video border-0 sm:border border-[#D4AF37]/40 shadow-2xl bg-gradient-to-br from-[#0B1526] via-[#111C33] to-[#1E1B4B]">
-        
-        {/* Mobile Horizontal Pill Strip (< lg screens) */}
-        <div className="flex lg:hidden overflow-x-auto scrollbar-none py-3 px-3 gap-2 border-b border-[#D4AF37]/30 bg-gradient-to-r from-[#0B1526] via-[#111C33] to-[#1E1B4B] z-40 shrink-0">
-          {EVENTS_DATA.map((feature, index) => {
-            const isActive = index === currentIndex;
-            const IconComponent = feature.icon;
+    <div className="w-full max-w-2xl mx-auto space-y-8">
+      {/* 1. Quick-Jump Date Pills Bar (Sticky / Easy Navigation for All Guests) */}
+      <div className="sticky top-4 z-30 py-2.5 px-3 rounded-2xl bg-[#091124]/90 backdrop-blur-xl border border-[#D4AF37]/50 shadow-[0_8px_30px_rgba(0,0,0,0.7)] flex items-center gap-2 overflow-x-auto no-scrollbar">
+        <span className="text-[10px] sm:text-xs font-cinzel font-bold uppercase tracking-wider text-amber-200 shrink-0 px-1">
+          Jump to:
+        </span>
+        {EVENTS_DATA.map((event, idx) => {
+          const shortDate = event.sublabel.split("•")[0].trim();
+          return (
+            <button
+              key={event.id}
+              onClick={() => scrollToEvent(event.id)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-cinzel font-semibold text-white/90 bg-white/[0.08] hover:bg-[#D4AF37]/20 hover:text-amber-200 hover:border-[#D4AF37] border border-white/10 transition-all shrink-0 active:scale-95 shadow-sm"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-300" />
+              <span>{idx + 1}. {shortDate}</span>
+            </button>
+          );
+        })}
+      </div>
 
-            return (
-              <button
-                key={feature.id}
-                onClick={() => handleChipClick(index)}
-                className={cn(
-                  "flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all text-left shrink-0 border cursor-pointer",
-                  isActive
-                    ? "bg-gradient-to-r from-[#38BDF8] via-[#F472B6] to-[#D4AF37] text-white border-white shadow-md font-bold scale-105"
-                    : "bg-black/40 text-sky-100/70 border-sky-400/20 hover:border-sky-400/50"
-                )}
+      {/* 2. Natural Vertical Scroll Stream of Event Cards */}
+      <div className="space-y-12 sm:space-y-16">
+        {EVENTS_DATA.map((event, index) => {
+          const IconComponent = event.icon;
+          const isLast = index === EVENTS_DATA.length - 1;
+
+          return (
+            <div key={event.id} id={`event-${event.id}`} className="scroll-mt-24">
+              <motion.div
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6 }}
+                className="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-3 border-[#D4AF37] bg-gradient-to-b from-[#111A2E]/95 via-[#18122B]/95 to-[#240A22]/95 shadow-[0_20px_60px_rgba(0,0,0,0.7),0_0_35px_rgba(212,175,55,0.2)] backdrop-blur-xl group"
               >
-                <IconComponent className={cn("w-3.5 h-3.5 shrink-0", isActive ? "text-white" : "text-[#D4AF37]")} />
-                <span className="font-serif-luxury font-bold text-[11px] whitespace-nowrap uppercase">
-                  {feature.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Desktop Vertical Navigation Rail (>= lg screens) */}
-        <div className="hidden lg:flex w-[42%] h-full relative z-30 flex-col items-start justify-center overflow-hidden pl-12 bg-gradient-to-b from-[#0B1526] via-[#111C33] to-[#1E1B4B]">
-          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0B1526] via-[#0B1526]/80 to-transparent z-40" />
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1E1B4B] via-[#1E1B4B]/80 to-transparent z-40" />
-          
-          <div className="relative w-full h-full flex items-center justify-start z-20">
-            {EVENTS_DATA.map((feature, index) => {
-              const isActive = index === currentIndex;
-              const distance = index - currentIndex;
-              const wrappedDistance = wrap(
-                -(EVENTS_DATA.length / 2),
-                EVENTS_DATA.length / 2,
-                distance
-              );
-
-              const IconComponent = feature.icon;
-
-              return (
-                <motion.div
-                  key={feature.id}
-                  style={{
-                    height: ITEM_HEIGHT,
-                    width: "fit-content",
-                  }}
-                  animate={{
-                    y: wrappedDistance * ITEM_HEIGHT,
-                    opacity: 1 - Math.abs(wrappedDistance) * 0.25,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 90,
-                    damping: 22,
-                    mass: 1,
-                  }}
-                  className="absolute flex items-center justify-start"
-                >
-                  <button
-                    onClick={() => handleChipClick(index)}
-                    className={cn(
-                      "relative flex items-center gap-4 px-8 py-3 rounded-full transition-all duration-700 text-left group border cursor-pointer",
-                      isActive
-                        ? "bg-gradient-to-r from-[#D4AF37] via-[#FDE68A] to-[#B5965A] text-[#291C1A] border-amber-300 shadow-xl z-10 font-bold scale-105"
-                        : "bg-black/30 text-amber-100/70 border-[#D4AF37]/20 hover:border-[#D4AF37]/50 hover:text-white"
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        "flex items-center justify-center transition-colors duration-500 shrink-0",
-                        isActive ? "text-[#0284C7]" : "text-[#D4AF37]"
-                      )}
-                    >
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-
-                    <div className="flex flex-col">
-                      <span className="font-serif-luxury font-bold text-sm tracking-wide whitespace-nowrap uppercase">
-                        {feature.label}
-                      </span>
-                      <span className="text-[11px] font-sans-body opacity-80 whitespace-nowrap">
-                        {feature.sublabel}
-                      </span>
-                    </div>
-                  </button>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Full-Bleed Event Visual Stage & Card */}
-        <div className="flex-1 min-h-[500px] sm:min-h-[560px] lg:h-full relative bg-[#070D19]/90 flex items-center justify-center py-4 sm:py-12 md:py-20 lg:py-12 px-2 sm:px-6 md:px-10 lg:px-8 overflow-hidden border-t lg:border-t-0 lg:border-l border-[#D4AF37]/30">
-          
-          {/* Mobile Touch / Navigation Arrows */}
-          <button
-            onClick={prevStep}
-            aria-label="Previous Event"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-black/70 text-[#D4AF37] border border-[#D4AF37]/50 hover:bg-[#D4AF37] hover:text-[#291C1A] transition-all shadow-2xl active:scale-95"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          
-          <button
-            onClick={nextStep}
-            aria-label="Next Event"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-black/70 text-[#D4AF37] border border-[#D4AF37]/50 hover:bg-[#D4AF37] hover:text-[#291C1A] transition-all shadow-2xl active:scale-95"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          <div className="relative w-[92%] sm:w-full max-w-[360px] sm:max-w-[390px] md:max-w-[420px] aspect-[3/4] sm:aspect-[4/5] flex items-center justify-center">
-            {EVENTS_DATA.map((feature, index) => {
-              const status = getCardStatus(index);
-              const isActive = status === "active";
-              const isPrev = status === "prev";
-              const isNext = status === "next";
-
-              return (
-                <motion.div
-                  key={feature.id}
-                  initial={false}
-                  animate={{
-                    x: isActive ? 0 : isPrev ? -80 : isNext ? 80 : 0,
-                    scale: isActive ? 1 : isPrev || isNext ? 0.85 : 0.7,
-                    opacity: isActive ? 1 : isPrev || isNext ? 0.35 : 0,
-                    rotate: isPrev ? -3 : isNext ? 3 : 0,
-                    zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
-                    pointerEvents: isActive ? "auto" : "none",
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 25,
-                    mass: 0.8,
-                  }}
-                  className="absolute inset-0 rounded-[1.75rem] sm:rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border-3 sm:border-4 md:border-6 border-[#D4AF37] bg-[#0B1526] shadow-2xl origin-center"
-                >
+                {/* Visual Banner Header with Arch Image & Overlays */}
+                <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] overflow-hidden">
                   <img
-                    src={feature.image}
-                    alt={feature.label}
-                    className={cn(
-                      "w-full h-full object-cover transition-all duration-700",
-                      isActive
-                        ? "grayscale-0 blur-0"
-                        : "grayscale blur-[2px] brightness-75"
-                    )}
+                    src={event.image}
+                    alt={event.label}
+                    className="w-full h-full object-cover brightness-[1.02] contrast-[1.03] transition-transform duration-700 group-hover:scale-105"
                   />
 
-                  {/* Active Event Info Backdrop Overlay */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 pt-24 bg-gradient-to-t from-black/95 via-black/80 to-transparent flex flex-col justify-end pointer-events-none"
-                      >
-                        {/* Event Title Badge */}
-                        <div className="bg-gradient-to-r from-[#0284C7] via-[#0369A1] to-[#DB2777] text-white px-3 py-1 rounded-full text-[10px] sm:text-xs font-cinzel font-bold uppercase tracking-[0.2em] w-fit shadow-md mb-2.5 border border-amber-200/60">
-                          {index + 1} • {feature.label}
+                  {/* Gradient Fade to Content */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111A2E] via-black/40 to-black/30 pointer-events-none" />
+
+                  {/* Top Bar Badges on Image */}
+                  <div className="absolute top-3.5 inset-x-3.5 sm:top-5 sm:inset-x-5 flex items-center justify-between gap-2 z-10">
+                    {/* Hashtag Pill */}
+                    <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#D4AF37]/50 text-amber-200 text-[10px] sm:text-xs font-cinzel font-bold tracking-widest uppercase shadow-md">
+                      #DeepWedsAshi
+                    </div>
+
+                    {/* Ceremony Number Pill */}
+                    <div className="px-3.5 py-1 rounded-full bg-gradient-to-r from-[#0284C7] via-[#0369A1] to-[#DB2777] text-white text-[11px] sm:text-xs font-cinzel font-bold tracking-wider uppercase border border-amber-200/60 shadow-lg">
+                      {index + 1} OF {EVENTS_DATA.length}
+                    </div>
+                  </div>
+
+                  {/* Main Event Title Overlaid on Image Base */}
+                  <div className="absolute bottom-3 inset-x-4 sm:bottom-4 sm:inset-x-6 z-10 space-y-1">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-amber-300/40 text-amber-300 text-xs font-cinzel font-bold uppercase tracking-wider">
+                      <IconComponent className="w-3.5 h-3.5 text-amber-300" />
+                      <span>{event.sublabel}</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif-luxury font-bold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+                      {event.label}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Card Body Details */}
+                <div className="p-5 sm:p-7 space-y-5 text-white">
+                  {/* Event Description */}
+                  <p className="text-xs sm:text-sm font-sans-body text-sky-100/95 leading-relaxed">
+                    {event.description}
+                  </p>
+
+                  {/* Special Dual Portion Layout for Path Samapti */}
+                  {event.portions ? (
+                    <div className="space-y-3 pt-1">
+                      <div className="grid grid-cols-1 gap-2.5 sm:gap-3">
+                        {event.portions.map((portion, pIdx) => {
+                          const isBride = portion.side.toLowerCase().includes("bride");
+                          return (
+                            <div
+                              key={pIdx}
+                              className={cn(
+                                "p-3 sm:p-4 rounded-2xl border backdrop-blur-md text-left transition-all",
+                                isBride
+                                  ? "bg-gradient-to-r from-[#DB2777]/30 via-[#BE185D]/20 to-black/60 border-[#F472B6]/60 shadow-[0_4px_20px_rgba(219,39,119,0.2)]"
+                                  : "bg-gradient-to-r from-[#0284C7]/30 via-[#0369A1]/20 to-black/60 border-[#38BDF8]/60 shadow-[0_4px_20px_rgba(2,132,199,0.2)]"
+                              )}
+                            >
+                              <div className="flex items-center justify-between gap-2 mb-2">
+                                <span
+                                  className={cn(
+                                    "text-[10px] sm:text-xs font-cinzel font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border shrink-0",
+                                    isBride
+                                      ? "bg-[#DB2777]/60 text-pink-100 border-pink-300/60"
+                                      : "bg-[#0284C7]/60 text-sky-100 border-sky-300/60"
+                                  )}
+                                >
+                                  {portion.side}
+                                </span>
+                                <span className="text-xs sm:text-sm font-serif-luxury font-bold text-amber-200">
+                                  {portion.eventName}
+                                </span>
+                              </div>
+
+                              <div className="space-y-1.5 text-xs sm:text-sm font-sans-body">
+                                <div className="flex items-center justify-between gap-2 text-amber-200">
+                                  <div className="flex items-center gap-1.5">
+                                    <Clock className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                                    <span>
+                                      Samapti Time: <strong className="text-white font-semibold">{portion.samaptiTime}</strong>
+                                    </span>
+                                  </div>
+                                  {portion.date && (
+                                    <span className="text-amber-200/90 font-cinzel font-semibold text-xs">
+                                      {portion.date}
+                                    </span>
+                                  )}
+                                </div>
+
+                                <a
+                                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(portion.venue)}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-sky-100/95 hover:text-white transition-colors group/map pt-0.5 font-medium"
+                                >
+                                  <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0" />
+                                  <span className="underline underline-offset-4 decoration-[#D4AF37]/70">
+                                    {portion.venue} 📍
+                                  </span>
+                                </a>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Shared Dress Code Banner */}
+                      <div className="p-3 rounded-xl bg-white/[0.05] border border-amber-300/30 flex items-center justify-between flex-wrap gap-2 text-xs font-sans-body">
+                        <span className="text-white/80">Tuesday, 8th Dec 2026</span>
+                        <div className="flex items-center gap-1.5 text-amber-200 font-medium">
+                          <Shirt className="w-3.5 h-3.5 text-amber-300" />
+                          <span>DRESS CODE: <strong className="text-white">{event.dressCode}</strong></span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    /* Standard Ceremony Details Grid */
+                    <div className="space-y-3 pt-1">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                        {/* Time & Date Box */}
+                        <div className="p-3 sm:p-3.5 rounded-xl bg-white/[0.06] border border-amber-300/30 space-y-1">
+                          <div className="flex items-center gap-1.5 text-amber-200 text-xs font-cinzel uppercase tracking-wider font-semibold">
+                            <Clock className="w-3.5 h-3.5 text-amber-300" />
+                            <span>Date &amp; Time</span>
+                          </div>
+                          <p className="text-xs sm:text-sm font-sans-body font-semibold text-white">
+                            {event.time}
+                          </p>
                         </div>
 
-                        {feature.description && (
-                          <p className="text-[#FFF9EF]/90 text-xs sm:text-sm font-sans-body mb-2.5 leading-relaxed line-clamp-3">
-                            {feature.description}
+                        {/* Dress Code Box */}
+                        <div className="p-3 sm:p-3.5 rounded-xl bg-white/[0.06] border border-amber-300/30 space-y-1">
+                          <div className="flex items-center gap-1.5 text-amber-200 text-xs font-cinzel uppercase tracking-wider font-semibold">
+                            <Shirt className="w-3.5 h-3.5 text-amber-300" />
+                            <span>Dress Code</span>
+                          </div>
+                          <p className="text-xs sm:text-sm font-sans-body font-semibold text-white">
+                            {event.dressCode}
                           </p>
-                        )}
+                        </div>
+                      </div>
 
-                        {feature.portions ? (
-                          /* TWO SEPARATE PORTIONS / CARDS UNDER MAIN HEADING PATH SAMAPTI */
-                          <div className="space-y-2 border-t border-[#D4AF37]/40 pt-2 pointer-events-auto">
-                            <div className="grid grid-cols-1 gap-1.5 sm:gap-2">
-                              {feature.portions.map((portion, pIdx) => {
-                                const isBride = portion.side.toLowerCase().includes("bride");
-                                return (
-                                  <div
-                                    key={pIdx}
-                                    className={cn(
-                                      "p-2 sm:p-2.5 rounded-xl border backdrop-blur-md transition-all text-left",
-                                      isBride
-                                        ? "bg-gradient-to-r from-[#DB2777]/25 via-[#BE185D]/15 to-black/50 border-[#F472B6]/50 shadow-[0_4px_16px_rgba(219,39,119,0.15)]"
-                                        : "bg-gradient-to-r from-[#0284C7]/25 via-[#0369A1]/15 to-black/50 border-[#38BDF8]/50 shadow-[0_4px_16px_rgba(2,132,199,0.15)]"
-                                    )}
-                                  >
-                                    <div className="flex items-center justify-between gap-1.5 mb-1">
-                                      <span
-                                        className={cn(
-                                          "text-[9px] sm:text-[10px] font-cinzel font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border shrink-0",
-                                          isBride
-                                            ? "bg-[#DB2777]/40 text-pink-100 border-pink-400/50"
-                                            : "bg-[#0284C7]/40 text-sky-100 border-sky-400/50"
-                                        )}
-                                      >
-                                        {portion.side}
-                                      </span>
-                                      <span className="text-[11px] sm:text-xs font-serif-luxury font-bold text-amber-200 truncate">
-                                        {portion.eventName}
-                                      </span>
-                                    </div>
-
-                                    <div className="space-y-0.5 text-[10px] sm:text-[11px] font-sans-body">
-                                      <div className="flex items-center justify-between gap-1.5 text-amber-200">
-                                        <div className="flex items-center gap-1.5">
-                                          <Clock className="w-3 h-3 text-[#D4AF37] shrink-0" />
-                                          <span>
-                                            Samapti Time: <strong className="text-white font-semibold">{portion.samaptiTime}</strong>
-                                          </span>
-                                        </div>
-                                        {portion.date && (
-                                          <span className="text-amber-200/90 font-cinzel font-semibold text-[10px]">
-                                            {portion.date}
-                                          </span>
-                                        )}
-                                      </div>
-                                      <a
-                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(portion.venue)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-start gap-1.5 text-sky-100/90 hover:text-white transition-colors group/map"
-                                      >
-                                        <MapPin className="w-3 h-3 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0 mt-0.5" />
-                                        <span className="leading-snug underline underline-offset-2 decoration-[#D4AF37]/50">{portion.venue} 📍</span>
-                                      </a>
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-
-                            {/* Shared Dress Code & Date */}
-                            <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-sans-body text-amber-200/90 pt-0.5">
-                              <span className="text-[#FFF9EF]/80">Tuesday, 8th Dec 2026</span>
-                              {feature.dressCode && (
-                                <div className="flex items-center gap-1 text-amber-200">
-                                  <Shirt className="w-3 h-3 text-[#D4AF37] shrink-0" />
-                                  <span>DRESS CODE: {feature.dressCode}</span>
-                                </div>
-                              )}
-                            </div>
+                      {/* Venue Box with Direct Google Maps Link */}
+                      <div className="p-3.5 rounded-xl bg-white/[0.06] border border-[#D4AF37]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="space-y-0.5">
+                          <div className="flex items-center gap-1.5 text-amber-200 text-xs font-cinzel uppercase tracking-wider font-semibold">
+                            <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
+                            <span>Ceremony Venue</span>
                           </div>
-                        ) : (
-                          /* Timing & Venue Pills */
-                          <div className="space-y-1.5 text-[11px] sm:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90 pointer-events-auto">
-                            <div className="flex items-center gap-1.5 text-amber-200">
-                              <Clock className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                              <span className="truncate">{feature.time}</span>
-                            </div>
-                            {feature.venue && (
-                              <a
-                                href="https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-1.5 text-amber-200 hover:text-amber-300 transition-colors group/map"
-                              >
-                                <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0" />
-                                <span className="truncate underline underline-offset-2 decoration-[#D4AF37]/60">{feature.venue} 📍</span>
-                              </a>
-                            )}
-                            {feature.dressCode && (
-                              <div className="flex items-center gap-1.5 text-amber-200">
-                                <Shirt className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                                <span className="truncate">DRESS CODE: {feature.dressCode}</span>
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                          <p className="text-xs sm:text-sm font-sans-body font-medium text-white/95">
+                            {event.venue}
+                          </p>
+                        </div>
 
-                  {/* Live Event Indicator */}
-                  <div
-                    className={cn(
-                      "absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2 transition-opacity duration-300 bg-black/60 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-[#D4AF37]/50",
-                      isActive ? "opacity-100" : "opacity-0"
-                    )}
-                  >
-                    <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-ping" />
-                    <span className="text-amber-200 text-[9px] sm:text-[10px] font-cinzel uppercase tracking-[0.2em] font-bold">
-                      #DeepWedsAshi
-                    </span>
+                        {event.googleMapsUrl && (
+                          <a
+                            href={event.googleMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#0284C7] to-[#0369A1] hover:scale-105 active:scale-95 text-white text-xs font-sans-body font-semibold transition-all border border-amber-200/50 shadow-md shrink-0"
+                          >
+                            <MapPin className="w-3.5 h-3.5 text-amber-200" />
+                            <span>Directions (Map)</span>
+                            <ExternalLink className="w-3 h-3 text-amber-200" />
+                          </a>
+                        )}
+                      </div>
+
+                      {/* Add to Calendar Button */}
+                      {event.calendarLink && (
+                        <div className="pt-1 flex justify-end">
+                          <a
+                            href={event.calendarLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs text-amber-200 hover:text-white font-sans-body transition-colors underline underline-offset-4 decoration-amber-300/50"
+                          >
+                            <Calendar className="w-3.5 h-3.5 text-amber-300" />
+                            <span>Add {event.label.split("(")[0].trim()} to Calendar</span>
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+
+              {/* Connecting Downward Ornament between Event Cards */}
+              {!isLast && (
+                <div className="py-6 sm:py-8 flex flex-col items-center justify-center text-amber-300/70 select-none">
+                  <div className="w-[2px] h-6 bg-gradient-to-b from-[#D4AF37] to-transparent" />
+                  <div className="my-1 flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.05] border border-amber-300/30 text-[10px] sm:text-xs font-cinzel tracking-widest uppercase text-amber-200">
+                    <ChevronDown className="w-3.5 h-3.5 text-amber-300 animate-bounce" />
+                    <span>Next Ceremony</span>
+                    <ChevronDown className="w-3.5 h-3.5 text-amber-300 animate-bounce" />
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+                  <div className="w-[2px] h-6 bg-gradient-to-t from-[#D4AF37] to-transparent" />
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
