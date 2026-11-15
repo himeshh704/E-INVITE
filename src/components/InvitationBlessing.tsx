@@ -229,13 +229,13 @@ export const InvitationBlessing: React.FC = () => {
               </svg>
             </div>
 
-            <div className="flex items-center gap-1">
+            <a href="#hashtag-corner" className="flex items-center gap-1 hover:scale-105 transition-transform cursor-pointer">
               <Sparkles className="w-4 h-4 text-[#C59B27]" />
               <span className="text-[10px] font-cinzel tracking-widest text-[#B8860B] uppercase font-bold">
-                #DeepWedsAshi
+                {WEDDING_DATA.couple.hashtag}
               </span>
               <Sparkles className="w-4 h-4 text-[#C59B27]" />
-            </div>
+            </a>
 
             {/* Right Chhatri Dome & Lotus */}
             <div className="w-16 h-12 flex items-end">

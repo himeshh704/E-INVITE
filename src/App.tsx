@@ -7,6 +7,7 @@ import { DateReveal } from './components/DateReveal';
 import { Celebrations } from './components/Celebrations';
 import { SpecialNotes } from './components/SpecialNotes';
 import { CoupleStory } from './components/CoupleStory';
+import { InstagramHashtag } from './components/InstagramHashtag';
 import { FooterMap } from './components/FooterMap';
 import { MusicPlayer } from './components/MusicPlayer';
 import { FlowerShower } from './components/FlowerShower';
@@ -73,7 +74,10 @@ export function App() {
         {/* 6. Pre-Wedding Photo Gallery */}
         <CoupleStory />
 
-        {/* 6. Full Size Interactive Google Map & Footer */}
+        {/* 7. The Royal Hashtag & Instagram Corner */}
+        <InstagramHashtag />
+
+        {/* 8. Full Size Interactive Google Map & Footer */}
         <FooterMap />
       </main>
 

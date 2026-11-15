@@ -64,6 +64,7 @@ export interface WeddingData {
       image: string;
     };
     hashtag: string;
+    hashtags?: { tag: string; label: string; primary?: boolean }[];
     heading: string;
     subheading: string;
     openingFamily?: string;
@@ -115,7 +116,14 @@ export const WEDDING_DATA: WeddingData = {
       grandparents: "Sd. Kesar Singh & Sdr. Jogendra Kaur",
       image: "/images/gallery/gallery_real_2.jpg"
     },
-    hashtag: "#DeepWedsAshi",
+    hashtag: "#DeepInLoveWithAshi",
+    hashtags: [
+      { tag: "#DeepInLoveWithAshi", label: "Official Couple Tag", primary: true },
+      { tag: "#DeepWedsAshi", label: "Wedding Festivities", primary: false },
+      { tag: "#DuaSeHora", label: "Two Families, One Heart", primary: false },
+      { tag: "#DeepKiAshi", label: "Sangeet & Bhangra Beats", primary: false },
+      { tag: "#ADRoyalWedding", label: "Anand Karaj Nuptials", primary: false }
+    ],
     heading: "Deep weds Ashi",
     subheading: "WEDDING INVITATION",
     openingFamily: "The Hora & Dua Family",
