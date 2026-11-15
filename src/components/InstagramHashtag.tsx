@@ -94,21 +94,21 @@ export const InstagramHashtag: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-[#FFFDF9] via-white to-[#FFF9EF] border-2 border-[#D4AF37] shadow-[0_20px_50px_rgba(212,175,55,0.2)] overflow-hidden mb-10 text-center"
+          className="relative rounded-3xl p-4 sm:p-8 md:p-10 bg-gradient-to-br from-[#FFFDF9] via-white to-[#FFF9EF] border-2 border-[#D4AF37] shadow-[0_20px_50px_rgba(212,175,55,0.2)] overflow-hidden mb-10 text-center"
         >
           {/* Top Instagram Accent Line */}
           <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF]" />
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#D4AF37]/15 text-[#B45309] border border-[#D4AF37]/40 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/15 text-[#B45309] border border-[#D4AF37]/40 mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
-            <span className="text-[11px] font-cinzel font-bold tracking-widest uppercase">
+            <span className="text-[10px] sm:text-[11px] font-cinzel font-bold tracking-widest uppercase">
               {primaryTag.label}
             </span>
           </div>
 
-          {/* Big Hashtag Display */}
-          <div className="my-3">
-            <h3 className="text-3xl sm:text-5xl md:text-6xl font-cinzel font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] drop-shadow-sm select-all">
+          {/* Big Hashtag Display (Responsive to fit all mobile screens without cutting) */}
+          <div className="my-2 sm:my-3 px-1 w-full overflow-hidden flex items-center justify-center">
+            <h3 className="text-[1.3rem] min-[370px]:text-[1.5rem] min-[420px]:text-[1.75rem] sm:text-4xl md:text-5xl font-cinzel font-black tracking-tight sm:tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] drop-shadow-sm select-all break-normal max-w-full leading-tight">
               {primaryTag.tag}
             </h3>
           </div>
@@ -178,7 +178,7 @@ export const InstagramHashtag: React.FC = () => {
                     <span className="text-[10px] font-sans-body font-semibold text-[#8C6D46] uppercase tracking-wider block mb-1">
                       {item.label}
                     </span>
-                    <h4 className="text-lg font-cinzel font-bold text-[#0F172A] tracking-wide select-all">
+                    <h4 className="text-base sm:text-lg font-cinzel font-bold text-[#0F172A] tracking-tight sm:tracking-wide select-all break-normal">
                       {item.tag}
                     </h4>
                   </div>
