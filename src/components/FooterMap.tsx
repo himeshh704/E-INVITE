@@ -111,6 +111,10 @@ export const FooterMap: React.FC = () => {
             {WEDDING_DATA.couple.heading}
           </h3>
 
+          <p className="text-xs sm:text-sm font-cinzel tracking-[0.25em] text-[#B45309] uppercase font-bold">
+            R.S.V.P: HORA &amp; DUA
+          </p>
+
           {/* Magical Creator Credit & Contact Tag */}
           <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#0C4A6E] via-[#0284C7] to-[#BE185D] border-2 border-[#D4AF37]/60 text-white shadow-2xl relative overflow-hidden max-w-xl mx-auto text-center group">
             {/* Ambient Sparkle Glows */}

@@ -115,13 +115,17 @@ export const RsvpSection: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#6E1F2E]/10 border border-[#6E1F2E]/30 text-[#6E1F2E]">
             <Ticket className="w-4 h-4 text-[#6E1F2E]" />
             <span className="text-xs uppercase font-sans-body tracking-[0.25em] font-semibold">
-              Guest Concierge & RSVP
+              Guest Concierge &amp; RSVP • HORA &amp; DUA
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-serif-luxury font-bold text-[#6E1F2E]">
             Confirm Your Attendance
           </h2>
+
+          <p className="text-xs sm:text-sm font-cinzel font-bold tracking-[0.25em] text-[#B5965A] uppercase">
+            RSVP: HORA &amp; DUA
+          </p>
 
           <p className="text-sm sm:text-base font-cormorant italic text-[#291C1A]/80 max-w-lg mx-auto">
             Please respond by 15 January 2027 to generate your official Guest Entry Pass.
@@ -167,7 +171,7 @@ export const RsvpSection: React.FC = () => {
                         <span className="text-2xl font-serif text-[#D4AF37]">ੴ</span>
                         <div>
                           <span className="text-xs font-cinzel text-[#D4AF37] uppercase font-bold tracking-widest block">
-                            Deep weds Ashi
+                            Deep weds Ashi • HORA &amp; DUA
                           </span>
                           <span className="text-[10px] font-sans-body text-[#FFF9EF]/70 block">
                             ROYAL GUEST ACCESS PASS

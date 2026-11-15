@@ -66,6 +66,8 @@ export interface WeddingData {
     hashtag: string;
     heading: string;
     subheading: string;
+    openingFamily?: string;
+    rsvpFamily?: string;
   };
   weddingDateISO: string;
   formattedDate: string;
@@ -115,7 +117,9 @@ export const WEDDING_DATA: WeddingData = {
     },
     hashtag: "#DeepWedsAshi",
     heading: "Deep weds Ashi",
-    subheading: "WEDDING INVITATION"
+    subheading: "WEDDING INVITATION",
+    openingFamily: "The Hora & Dua Family",
+    rsvpFamily: "HORA & DUA"
   },
   weddingDateISO: "2026-12-17T11:00:00",
   formattedDate: "17 December 2026",

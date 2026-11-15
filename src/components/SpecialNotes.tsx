@@ -148,6 +148,16 @@ export const SpecialNotes: React.FC = () => {
                 </motion.div>
               </div>
             </motion.div>
+
+            {/* 3. RSVP Section */}
+            <motion.div variants={itemVariants} className="pt-4 space-y-1">
+              <span className="text-[10px] sm:text-xs font-cinzel font-bold tracking-[0.3em] text-[#D4AF37] uppercase block">
+                R. S. V. P.
+              </span>
+              <p className="text-xl sm:text-2xl font-cinzel font-bold text-[#FDE68A] tracking-[0.2em] uppercase drop-shadow-sm">
+                HORA &amp; DUA
+              </p>
+            </motion.div>
           </motion.div>
 
           {/* Bottom Golden Line */}

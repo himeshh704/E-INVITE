@@ -116,15 +116,15 @@ export const InvitationBlessing: React.FC = () => {
             Together with their families,
           </p>
 
-          {/* Grandparents Line (Golden Cursive Script) */}
+          {/* Family Name (The Hora & Dua Family) */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="my-3"
           >
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-alex-brush text-[#C59B27] font-bold tracking-wide drop-shadow-sm px-2">
-              {WEDDING_DATA.couple.groom.grandparents}
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-alex-brush text-[#C59B27] font-bold tracking-wide drop-shadow-sm px-2">
+              The Hora &amp; Dua Family
             </h3>
           </motion.div>
 
@@ -137,7 +137,7 @@ export const InvitationBlessing: React.FC = () => {
               "WEDDING CELEBRATIONS"
             </h4>
             <p className="text-xs sm:text-sm font-sans-body text-[#7A5C3D]">
-              of their Grandson
+              of their beloved children
             </p>
           </div>
 
@@ -152,9 +152,12 @@ export const InvitationBlessing: React.FC = () => {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-alex-brush text-[#0369A1] font-bold tracking-normal leading-tight">
               {WEDDING_DATA.couple.groom.fullName}
             </h2>
-            <p className="text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium">
-              (S/o. {WEDDING_DATA.couple.groom.parents})
-            </p>
+            <div className="space-y-0.5 text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium pt-1">
+              <p className="text-xs sm:text-sm text-[#5E4B37]/90 font-medium">
+                (G/s. {WEDDING_DATA.couple.groom.grandparents})
+              </p>
+              <p>(S/o. {WEDDING_DATA.couple.groom.parents})</p>
+            </div>
           </motion.div>
 
           {/* Connector Word */}
@@ -202,6 +205,16 @@ export const InvitationBlessing: React.FC = () => {
             </p>
             <p className="text-xs font-sans-body text-[#DB2777] italic font-medium">
               (Followed by Celebratory Lunch at The Grand, Asansol)
+            </p>
+          </div>
+
+          {/* RSVP & Family Line at the end of the invitation card */}
+          <div className="mt-8 pt-5 border-t border-[#D4AF37]/30 text-center space-y-1">
+            <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.25em] text-[#B5965A] uppercase block">
+              R. S. V. P.
+            </span>
+            <p className="text-lg sm:text-xl font-cinzel font-bold text-[#6E1F2E] tracking-widest uppercase">
+              HORA &amp; DUA
             </p>
           </div>
 
