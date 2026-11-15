@@ -53,7 +53,7 @@ const EVENTS_DATA: EventFeatureItem[] = [
         side: "Bride’s Side",
         eventName: "Sahej Path Samapti",
         date: "8th Dec 2026",
-        samaptiTime: "9:30 AM",
+        samaptiTime: "12:00 PM",
         venue: "Gurudwara Gurunanak Pura, Dhanbad",
       },
       {
